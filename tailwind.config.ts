@@ -9,8 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        primary: "#f26d89",
+        footer: "#302836",
         background: "var(--background)",
         foreground: "var(--foreground)",
+      },
+      maxWidth: {
+        "1400": "1400px", // Add your custom max width here
       },
     },
   },
