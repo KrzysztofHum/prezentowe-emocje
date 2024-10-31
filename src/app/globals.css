@@ -2,7 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-    height: 100%;
-    margin: 0;
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.section {
+  @apply flex flex-col items-center justify-center text-center pb-10;
+}
+
+.sectionTitle {
+  @apply text-2xl md:text-4xl font-medium p-4 text-center;
+}
+
+.sectionSubtitle {
+  @apply text-gray-500 text-center;
+}
+
+.sectionBtn {
+  @apply bg-primary border-primary border-2 p-2 px-10 text-white hover:bg-white hover:text-black uppercase;
 }

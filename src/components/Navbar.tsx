@@ -35,8 +35,8 @@ const Navbar = () => {
           </button>
           {/* Logo */}
           <Link href="/">
-            <div className="text-black text-2xl font-bold cursor-pointer">
-              Prezentowe Emocje
+            <div className="text-primary text-4xl font-bold cursor-pointer">
+              Prezentowe Love
             </div>
           </Link>
         </div>

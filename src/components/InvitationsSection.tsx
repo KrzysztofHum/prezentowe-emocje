@@ -2,13 +2,15 @@ import Link from "next/link";
 
 export const InvitationsSection = () => {
   return (
-    <section>
-      <p>Zaproszenia</p>
-      <p>
+    <section className="section">
+      <p className="sectionTitle">Zaproszenia</p>
+      <p className="sectionSubtitle">
         Przegladaj najczesciej kupowane zaproszenia na ślub, komunie, urodziny.
       </p>
       <div>Lista zaproszeń</div>
-      <Link href="/zaproszenia">Zobacz Wszystkie</Link>
+      <Link className="sectionBtn" href="/zaproszenia">
+        Zobacz Wszystkie
+      </Link>
     </section>
   );
 };
