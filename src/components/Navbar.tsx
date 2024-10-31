@@ -63,9 +63,9 @@ const Navbar = () => {
               rx="1.09091"
               ry="1.16159"
               stroke="#302836"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="group-hover:stroke-primary transition-colors duration-200"
             ></ellipse>
             <ellipse
@@ -74,17 +74,17 @@ const Navbar = () => {
               rx="1.09091"
               ry="1.16159"
               stroke="#302836"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="group-hover:stroke-primary transition-colors duration-200"
             ></ellipse>
             <path
               d="M11 13.4746H15.3636L18.2873 29.0283C18.4932 30.1321 19.4124 30.9201 20.4691 30.8985H31.0727C32.1294 30.9201 33.0487 30.1321 33.2545 29.0283L35 19.2826H16.4545"
               stroke="#302836"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="group-hover:stroke-primary transition-colors duration-200"
             ></path>
           </svg>
