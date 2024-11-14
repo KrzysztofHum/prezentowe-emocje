@@ -13,6 +13,7 @@ const config: Config = {
         footer: "#302836",
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "white-opacity-11": "rgba(255,255,255,.11)",
       },
       maxWidth: {
         "1400": "1400px", // Add your custom max width here

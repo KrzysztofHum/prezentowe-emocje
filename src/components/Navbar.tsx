@@ -96,16 +96,25 @@ const Navbar = () => {
       </div>
       {/* Desktop Menu */}
       <div className="hidden md:flex space-x-6">
-        <Link href="/" className="block text-black hover:text-gray-200">
+        <Link href="/" className="block font-medium text-black">
           Ślub
         </Link>
-        <Link href="/about" className="block text-black hover:text-gray-200">
+        <Link
+          href="/about"
+          className="block font-medium text-black hover:text-gray-200"
+        >
           Zaręczyny
         </Link>
-        <Link href="/services" className="block text-black hover:text-gray-200">
+        <Link
+          href="/services"
+          className="block font-medium text-black hover:text-gray-200"
+        >
           Prezenty
         </Link>
-        <Link href="/contact" className="block text-black hover:text-gray-200">
+        <Link
+          href="/contact"
+          className="block font-medium text-black hover:text-gray-200"
+        >
           Zaproszenia ślubne
         </Link>
       </div>
