@@ -117,6 +117,12 @@ const Navbar = () => {
         >
           Zaproszenia ślubne
         </Link>
+        <Link
+          href="/blog"
+          className="block font-medium text-black hover:text-gray-200"
+        >
+          Blog
+        </Link>
       </div>
 
       {/* Mobile Menu */}
@@ -139,6 +145,12 @@ const Navbar = () => {
             className="block text-black hover:text-gray-200"
           >
             Zaproszenia ślubne
+          </Link>
+          <Link
+            href="/blog"
+            className="block text-black hover:text-gray-200"
+          >
+            Blog
           </Link>
         </div>
       )}
