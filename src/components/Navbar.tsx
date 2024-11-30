@@ -96,30 +96,39 @@ const Navbar = () => {
       </div>
       {/* Desktop Menu */}
       <div className="hidden md:flex space-x-6">
-        <Link href="/" className="block font-medium text-black">
+        <Link
+          href="/slub"
+          className="block font-medium text-black hover:text-primary"
+        >
           Ślub
         </Link>
         <Link
-          href="/about"
-          className="block font-medium text-black hover:text-gray-200"
+          href="/zareczyny"
+          className="block font-medium text-black hover:text-primary"
         >
           Zaręczyny
         </Link>
         <Link
-          href="/services"
-          className="block font-medium text-black hover:text-gray-200"
+          href="/komunia"
+          className="block font-medium text-black hover:text-primary"
+        >
+          Komunia
+        </Link>
+        <Link
+          href="/dekoracje"
+          className="block font-medium text-black hover:text-primary"
+        >
+          Dekoracje
+        </Link>
+        <Link
+          href="/prezenty"
+          className="block font-medium text-black hover:text-primary"
         >
           Prezenty
         </Link>
         <Link
-          href="/contact"
-          className="block font-medium text-black hover:text-gray-200"
-        >
-          Zaproszenia ślubne
-        </Link>
-        <Link
           href="/blog"
-          className="block font-medium text-black hover:text-gray-200"
+          className="block font-medium text-black hover:text-primary"
         >
           Blog
         </Link>
@@ -128,28 +137,31 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden mt-4 space-y-2">
-          <Link href="/" className="block text-black hover:text-gray-200">
+          <Link href="/slub" className="block text-black hover:text-primary">
             Ślub
           </Link>
-          <Link href="/about" className="block text-black hover:text-gray-200">
+          <Link
+            href="/zareczyny"
+            className="block text-black hover:text-primary"
+          >
             Zaręczyny
           </Link>
+          <Link href="/komunia" className="block text-black hover:text-primary">
+            Komunia
+          </Link>
           <Link
-            href="/services"
-            className="block text-black hover:text-gray-200"
+            href="/dekoracje"
+            className="block font-medium text-black hover:text-primary"
+          >
+            Dekoracje
+          </Link>
+          <Link
+            href="/prezenty"
+            className="block text-black hover:text-primary"
           >
             Prezenty
           </Link>
-          <Link
-            href="/contact"
-            className="block text-black hover:text-gray-200"
-          >
-            Zaproszenia ślubne
-          </Link>
-          <Link
-            href="/blog"
-            className="block text-black hover:text-gray-200"
-          >
+          <Link href="/blog" className="block text-black hover:text-primary">
             Blog
           </Link>
         </div>
