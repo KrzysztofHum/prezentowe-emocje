@@ -1,3 +1,4 @@
+import { Pagination } from "@/components/Pagination";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -48,7 +49,7 @@ const page = () => {
           ))}
       </div>
 
-      <div>Pagination</div>
+      <Pagination currentPage={1} totalPages={5} />
     </main>
   );
 };
