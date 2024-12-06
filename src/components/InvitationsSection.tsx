@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export const InvitationsSection = () => {
@@ -7,7 +8,47 @@ export const InvitationsSection = () => {
       <p className="sectionSubtitle">
         Przegladaj najczesciej kupowane zaproszenia na ślub, komunie, urodziny.
       </p>
-      <div>Lista zaproszeń</div>
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-4 mt-10">
+        <Link
+          href="/zaproszenia-slubne"
+          className=""
+        >
+          <Image
+            src={`/images/category/zaproszenia.png`}
+            width={300}
+            height={300}
+            alt="Picture of the author"
+            className="w-[350px] h-[300px] object-cover"
+          />
+          <h2 className="text-xl font-semibold m-1">Zaproszenia Ślubne</h2>
+        </Link>
+        <Link
+          href="/zaproszenia-slubne"
+          className=""
+        >
+          <Image
+            src={`/images/category/zaproszenia.png`}
+            width={350}
+            height={300}
+            alt="Picture of the author"
+            className="w-[350px] h-[300px] object-cover"
+          />
+          <h2 className="text-xl font-semibold m-1">Zaproszenia Komunijne</h2>
+        </Link>
+        <Link
+          href="/zaproszenia-slubne"
+          className=""
+        >
+          <Image
+            src={`/images/category/zaproszenia.png`}
+            width={300}
+            height={300}
+            alt="Picture of the author"
+            className="w-[350px] h-[300px] object-cover"
+          />
+          <h2 className="text-xl font-semibold m-1">Zaproszenia Urodzinowe</h2>
+        </Link>
+      </div>
       <Link className="sectionBtn" href="/zaproszenia">
         Zobacz Wszystkie
       </Link>

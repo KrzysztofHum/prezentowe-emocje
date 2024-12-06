@@ -17,9 +17,9 @@ body {
 }
 
 .sectionSubtitle {
-  @apply text-gray-500 text-center text-sm;
+  @apply text-gray-500 text-center text-sm px-3;
 }
 
 .sectionBtn {
-  @apply bg-primary border-primary border-2 p-2 px-10 text-white hover:bg-white hover:text-black uppercase;
+  @apply bg-primary border-primary border-2 p-4 px-16 text-white hover:bg-white hover:text-black uppercase mt-4;
 }

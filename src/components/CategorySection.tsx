@@ -9,7 +9,7 @@ const CategorySection = () => {
         Akcesoria na przyjecie podzielone na kategorie produktów. Wszystko co
         możesz załatwić przez internet znajdziesz u nas.
       </p>
-      <div className="grid grid-cols-1 gap-10 p-4 sm:grid-cols-2 lg:grid-cols-5 mt-10">
+      <div className="grid grid-cols-2 gap-10 p-4 sm:grid-cols-3 lg:grid-cols-6 mt-10">
         <Link
           href="/zaproszenia"
           className="hover:text-primary flex flex-col items-center text-center"
@@ -22,6 +22,19 @@ const CategorySection = () => {
             className="w-[150px] h-[150px] object-cover rounded-full"
           />
           <h2 className="text-xl font-semibold m-1">Zaproszenia</h2>
+        </Link>
+        <Link
+          href="/pudelka-obraczki"
+          className="hover:text-primary flex flex-col items-center text-center"
+        >
+          <Image
+            src={`/images/category/pudelka.png`}
+            width={300}
+            height={300}
+            alt="Picture of the author"
+            className="w-[150px] h-[150px] object-cover rounded-full"
+          />
+          <h2 className="text-xl font-semibold m-1">Pudełka na obrączki</h2>
         </Link>
         <Link
           href="/pudelka-obraczki"
