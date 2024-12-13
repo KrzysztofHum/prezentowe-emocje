@@ -8,7 +8,7 @@ const page = () => {
       <h1 className="mb-4 p-4 text-5xl font-medium">Blog</h1>
       <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3">
         {Array(6)
-          .fill()
+          .fill(null)
           .map((_, index) => (
             <article
               key={index}
