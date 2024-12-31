@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* hidding arrows  Chrome, Safari, Edge */
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+  @apply appearance-none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* hidding arrows  Firefox */
+.quantity-input {
+  @apply appearance-none;
+  -moz-appearance: textfield;
+}
+
 html,
 body {
   height: 100%;
@@ -22,4 +36,36 @@ body {
 
 .sectionBtn {
   @apply bg-primary border-primary border-2 p-4 px-16 text-white hover:bg-white hover:text-black uppercase mt-4;
+}
+
+.quantity-wrapper {
+  @apply flex items-center overflow-hidden w-fit;
+}
+
+.btn-qty {
+  @apply bg-primary text-white cursor-pointer focus:outline-none rounded-full flex items-center justify-center w-12 h-12;
+  position: relative;
+  height: 24px;
+  width: 24px;
+}
+
+.btn-qty:hover {
+  @apply bg-[#d25574];
+}
+
+.btn-qty::before,
+.btn-qty::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 2px;
+  background-color: white;
+}
+
+.btn-qty-up::before {
+  transform: rotate(90deg);
+}
+
+.quantity-input {
+  @apply w-16 text-center bg-white text-gray-700 text-base focus:outline-none border border-gray-300 mx-1;
 }
