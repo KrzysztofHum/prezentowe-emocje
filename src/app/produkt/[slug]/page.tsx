@@ -1,30 +1,41 @@
-import { fetchData } from "../../utils/db";
-import { createSlug } from "../../utils/createSlug";
 import Image from "next/image";
+import { fetchAllProducts, fetchProductBySlug } from "@/lib/products";
+import { createSlug } from "@/app/utils/createSlug";
 
-interface Params {
-  slug: string;
+interface Products {
+  id: string;
+  title: string;
+}
+
+interface ProductPageProps {
+  params: { slug: string };
 }
 
 export async function generateStaticParams() {
-  const data = await fetchData();
-  return data.map((item) => ({ slug: createSlug(item.title) }));
+  const products = await fetchAllProducts();
+  return products.map((product: Products) => ({
+    slug: createSlug(product.title),
+  }));
 }
 
-export async function generateMetadata({ params }: { params: Params }) {
-  const data = await fetchData();
-  const post = data.find((item) => createSlug(item.title) === params.slug);
-  return { title: post?.title || "Post Not Found" };
+export async function generateMetadata({ params }: ProductPageProps) {
+  const product = await fetchProductBySlug(params.slug);
+  return {
+    title: product ? product.title : "Product not found",
+  };
 }
 
-export default async function ProductPage({ params }: { params: Params }) {
-  const data = await fetchData();
-  const post = data.find((item) => createSlug(item.title) === params.slug);
+export default async function ProductPage({ params }: ProductPageProps) {
+  const product = await fetchProductBySlug(params.slug);
 
-  if (!post) {
-    return <p>Post not found</p>;
+  if (!product) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <h1 className="text-xl font-semibold">Produkt nie znaleziony</h1>
+      </div>
+    );
   }
-
+  console.log(product);
   return (
     <>
       <div className="flex flex-col sm:flex-row max-w-1400 mx-auto sm:px-4">
