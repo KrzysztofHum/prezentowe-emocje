@@ -11,6 +11,7 @@ interface Product {
   envelope: boolean;
   description: string;
   collection: string;
+  category: string;
 }
 
 interface Products {
@@ -20,6 +21,12 @@ interface Products {
 
 export async function fetchAllProducts(): Promise<Products[]> {
   const connection = await connectToDatabase();
+  if (!connection) {
+    console.warn(
+      "Database connection failed. Returning an empty product list."
+    );
+    return [];
+  }
   try {
     const query = `SELECT id, title FROM posts`;
     const [rows] = await connection.execute<RowDataPacket[]>(query);
@@ -41,9 +48,16 @@ export async function fetchProductBySlug(
   const sanitizedSlug = slug.trim().toLocaleLowerCase();
 
   const connection = await connectToDatabase();
+  if (!connection) {
+    console.warn(
+      "Database connection failed. Returning an empty product list."
+    );
+    return null;
+  }
+
   try {
     const query = `
-      SELECT id, title, img_url, size, price, paper, envelope, description, collection 
+      SELECT id, title, img_url, size, price, paper, envelope, description, collection, category 
       FROM posts 
       WHERE slug = ? 
       LIMIT 1
@@ -63,6 +77,7 @@ export async function fetchProductBySlug(
         envelope: row.envelope,
         description: row.description,
         collection: row.collection,
+        category: row.category,
       };
     } else {
       return null;

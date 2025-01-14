@@ -69,3 +69,41 @@ body {
 .quantity-input {
   @apply w-16 text-center bg-white text-gray-700 text-base focus:outline-none border border-gray-300 mx-1;
 }
+
+.product-desc h1 {
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  display: inline;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.product-desc h1 + ul,
+.product-desc h1 + ol {
+  margin-top: 20px;
+}
+
+.product-desc p {
+  margin-bottom: 10px;
+}
+
+.product-desc ul {
+  margin-bottom: 10px;
+  list-style-position: inside;
+}
+
+.product-desc ul li {
+  list-style-type: circle;
+  padding-left: 10px;
+}
+
+.product-desc ol {
+  margin-bottom: 10px;
+  list-style-position: inside;
+}
+
+.product-desc ol li {
+  list-style-type: decimal;
+  padding-left: 10px;
+}
