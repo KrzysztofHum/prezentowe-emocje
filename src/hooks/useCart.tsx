@@ -19,7 +19,9 @@ const useCart = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    if (cart.length > 0) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
   }, [cart]);
 
   const addToCart = (product: Product) => {
@@ -41,7 +43,10 @@ const useCart = () => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   };
 
-  const clearCart = () => setCart([]);
+    const clearCart = () => {
+      setCart([]); // Empty cart and remove from localStorage
+      localStorage.removeItem("cart");
+    };
 
   return { cart, addToCart, removeFromCart, clearCart };
 };
