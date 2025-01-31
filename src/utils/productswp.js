@@ -4,7 +4,7 @@ import crypto from "crypto";
 const oauth = OAuth({
   consumer: {
     key: process.env.CONSUMER_KEY,
-    secret: process.env.CONSUMER_DECRET,
+    secret: process.env.CONSUMER_SECRET,
   },
   signature_method: "HMAC-SHA1",
   hash_function(base_string, key) {

@@ -17,6 +17,7 @@ const config: Config = {
       },
       maxWidth: {
         "1400": "1400px", // Add your custom max width here
+        "800": "800px",
       },
     },
   },

@@ -1,39 +1,45 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Product {
   id: number;
   image: string;
-  title: string;
+  name: string;
   price: number;
   quantity: number;
 }
 
 const Cart: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([
-    {
-      id: 1,
-      image: "",
-      title: "Produkt 1 fwefwef wefwefwfewfe",
-      price: 100,
-      quantity: 1,
-    },
-    {
-      id: 2,
-      image: "",
-      title: "Produkt 2",
-      price: 150,
-      quantity: 2,
-    },
-  ]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [subscribeEmail, setSubscribeEmail] = useState(false);
   const [subscribePhone, setSubscribePhone] = useState(false);
 
+  useEffect(() => {
+    const savedProducts = localStorage.getItem("cart");
+    if (savedProducts) {
+      setProducts(JSON.parse(savedProducts));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(products));
+  }, [products]);
+
+  // const handleRemove = (id: number) => {
+  //   setProducts(products.filter((product) => product.id !== id));
+  // };
+
   const handleRemove = (id: number) => {
-    setProducts(products.filter((product) => product.id !== id));
+    setProducts((prevProducts) => {
+      const updatedProducts = prevProducts.filter(
+        (product) => product.id !== id
+      );
+      localStorage.setItem("cart", JSON.stringify(updatedProducts)); // Update localStorage
+      return updatedProducts;
+    });
   };
 
   const handleQuantityChange = (productId: number, action: "up" | "down") => {
@@ -108,14 +114,14 @@ const Cart: React.FC = () => {
               >
                 <div className="flex items-center border-b border-gray-300">
                   <Image
-                    className="max-h-[70px] max-w-[85px]"
+                    className="max-h-[80px] max-w-[90px] mr-2"
                     src={product.image}
-                    alt={product.title}
+                    alt={product.name}
                     width={400}
                     height={400}
                   />
                   <div>
-                    <h2 className="truncate w-full">{product.title}</h2>
+                    <h2 className="truncate w-full">{product.name}</h2>
                     <p className="text-primary font-medium text-2xl py-2">
                       {product.price} zł
                     </p>

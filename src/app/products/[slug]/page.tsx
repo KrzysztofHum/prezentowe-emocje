@@ -49,7 +49,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }
   return (
     <>
-      <div className="flex flex-col sm:flex-row max-w-1400 mx-auto sm:px-4">
+      <div className="flex flex-col sm:flex-row max-w-1400 mx-auto sm:px-4 mt-6">
         <div className="sm:w-1/2 lg:w-2/3 w-full">
           <Image
             src={product[0]?.images?.[0]?.src || ""}

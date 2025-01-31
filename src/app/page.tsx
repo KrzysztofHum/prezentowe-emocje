@@ -5,7 +5,7 @@ import { Accessories } from "@/components/Accessories";
 
 export default function Home() {
   return (
-    <main className="bg-slate-50	">
+    <main className="bg-slate-50">
       <h1 className="text-center p-3 bg-primary color-white text-white uppercase">
         Prezentowe Love - Sklep z akcesoriami ślubnymi, pudełkami prezentowymi.
       </h1>

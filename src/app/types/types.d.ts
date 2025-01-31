@@ -93,3 +93,27 @@ export interface Product {
   global_unique_id: string;
   _links: string; 
 }
+
+export interface BlogPost {
+  id: number;
+  date: string; 
+  date_gmt: string; 
+  slug: string; 
+  status: "publish" | "future" | "draft" | "pending" | "private"; 
+  type: "post"; 
+  link: string; 
+  title: { rendered: string }; 
+  content: { rendered: string; protected: boolean };
+  excerpt: { rendered: string; protected: boolean }; 
+  author: number; 
+  featured_media: number; 
+  categories: number[]; 
+  tags: number[]; 
+  _links: {
+    self: { href: string }[];
+    collection: { href: string }[];
+    about: { href: string }[];
+    author: { embeddable: boolean; href: string }[];
+    replies?: { embeddable: boolean; href: string }[];
+  };
+}
