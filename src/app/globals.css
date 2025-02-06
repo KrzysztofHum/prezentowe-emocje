@@ -200,3 +200,11 @@ body {
   max-width: 800px;
   aspect-ratio: 1024/684;
 }
+
+.blog-content .wp-block-columns {
+  display: flex;
+}
+
+.blog-content .wp-block-columns div {
+  width: 50%;
+}

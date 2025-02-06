@@ -99,7 +99,14 @@ export const fetchBlogPostBySlug = async (
       },
     });
 
-    return response.data.length > 0 ? response.data[0] : null;
+    const blogWithImage = {
+      ...response.data[0],
+      featured_image_url: await getFeaturedImageUrl(
+        response.data[0].featured_media
+      ),
+    };
+
+    return response.data.length > 0 ? blogWithImage : null;
   } catch (error) {
     console.error("Error fetching blog post:", error);
     throw error;
