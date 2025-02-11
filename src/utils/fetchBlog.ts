@@ -15,10 +15,14 @@ const oauth = new OAuth({
 
 interface Post {
   id: number;
+  slug: string; // Dodany slug dla generowania linków
   title: { rendered: string };
   content: { rendered: string };
+  excerpt: { rendered: string }; // Dodany excerpt do SEO
+  date: string; // Data publikacji
+  modified: string;
   featured_media: number;
-  featured_image_url: string | null;
+  featured_image_url: string | null; // URL obrazka wyróżniającego
 }
 
 interface FeaturedImageResponse {

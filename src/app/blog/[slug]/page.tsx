@@ -1,14 +1,16 @@
 import { fetchBlogPostBySlug, getBlogPosts } from "@/utils/fetchBlog";
 import { BlogPost } from "@/app/types/types";
 import Image from "next/image";
-// import Image from "next/image";
+import NextHead from "next/head";
+
 interface BlogPageProps {
   params: { slug: string };
 }
 
 export async function generateStaticParams() {
   const posts = await getBlogPosts();
-  return posts.map((post: BlogPost) => ({
+
+  return (posts as unknown as BlogPost[]).map((post) => ({
     slug: post.slug,
   }));
 }
@@ -16,7 +18,29 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: BlogPageProps) {
   const post = await fetchBlogPostBySlug(params.slug);
   return {
-    title: post ? post.title : "Product not found",
+    title: post?.title?.rendered || "Brak tytułu",
+    description:
+      post?.excerpt?.rendered.replace(/<[^>]+>/g, "") || "Opis artykułu",
+    openGraph: {
+      title: post?.title?.rendered,
+      description: post?.excerpt?.rendered.replace(/<[^>]+>/g, ""),
+      type: "article",
+      url: `https://twoja-strona.pl/blog/${params.slug}`,
+      images: [
+        {
+          url: post?.featured_image_url || "/default-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: post?.title?.rendered || "Obrazek wyróżniający",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post?.title?.rendered,
+      description: post?.excerpt?.rendered.replace(/<[^>]+>/g, ""),
+      images: [post?.featured_image_url || "/default-image.jpg"],
+    },
   };
 }
 
@@ -45,6 +69,39 @@ export default async function BlogPage({ params }: BlogPageProps) {
   }
   return (
     <>
+      <NextHead>
+        <title>{post?.title?.rendered}</title>
+        <meta
+          name="description"
+          content={post?.excerpt?.rendered.replace(/<[^>]*>/g, "")}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: post?.title?.rendered,
+              image: [post?.featured_image_url || "/default-image.jpg"],
+              datePublished: post?.date,
+              dateModified: post?.modified || post?.date,
+              author: {
+                "@type": "Person",
+                name: "Krzysztof",
+              },
+              publisher: {
+                "@type": "Organization",
+                name: "Twoja Firma",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "/logo.png",
+                },
+              },
+              description: post?.excerpt?.rendered.replace(/<[^>]*>/g, ""),
+            }),
+          }}
+        />
+      </NextHead>
       <nav className="max-w-1400 mx-auto py-8 px-4">
         <ul className="flex items-center space-x-2 text-gray-600">
           <li>
@@ -67,27 +124,37 @@ export default async function BlogPage({ params }: BlogPageProps) {
         </ul>
       </nav>
       <main>
-        <article className="max-w-800 mx-auto px-4">
-          <div className="flex flex-col sm:flex-row max-w-1400 mx-auto sm:px-4">
-            <div className="sm:w-1/2 lg:w-2/3 w-full">
-              <Image
-                src={post.featured_image_url || ""}
-                width={1200}
-                height={400}
-                alt="Picture of the author"
-                layout="responsive"
-              />
+        <article className="max-w-screen-xl mx-auto px-4">
+          {/* Obrazek wyróżniający */}
+          <div className="flex justify-center">
+            <Image
+              src={post.featured_image_url || "/default-image.jpg"}
+              width={1200}
+              height={400}
+              alt={post?.title?.rendered || "Obrazek wyróżniający"}
+              loading="lazy"
+              className="shadow-md max-h-[400px] object-cover w-full"
+            />
+          </div>
+          <div className="max-w-800 mx-auto sm:px-4">
+            {/* Tytuł */}
+            <h1 className="text-4xl font-bold my-4 leading-tight">
+              {post?.title?.rendered}
+            </h1>
+
+            {/* Meta informacje */}
+            <div className="text-sm text-gray-500 mb-6">
+              <p>
+                Utworzone przez{" "}
+                <span className="font-semibold text-gray-700">Krzysztof</span> |{" "}
+                <time dateTime="2024-12-14">14 grudnia 2024</time>
+              </p>
             </div>
-          </div>
-          <h1 className="text-5xl font-medium pb-4">{post?.title?.rendered}</h1>
-          <div className="pb-4">
-            <p>
-              utworzone przez <span className="text-gray-600">Krzysztof</span> |{" "}
-              <span>gru 14, 2024</span>
-            </p>
-          </div>
-          <div className="pb-6">
-            <PostContent description={post?.content} />
+
+            {/* Treść posta */}
+            <section className="prose lg:prose-xl max-w-none">
+              <PostContent description={post?.content} />
+            </section>
           </div>
         </article>
       </main>
