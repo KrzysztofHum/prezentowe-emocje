@@ -18,8 +18,11 @@
 
 html,
 body {
+  @apply font-sans;
   height: 100%;
   margin: 0;
+  font-size: 18px;
+  background-color: #f9fafb;
 }
 
 .section {

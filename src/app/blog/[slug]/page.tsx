@@ -124,7 +124,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         </ul>
       </nav>
       <main>
-        <article className="max-w-screen-xl mx-auto px-4">
+        <article className="max-w-1400 mx-auto px-4">
           {/* Obrazek wyróżniający */}
           <div className="flex justify-center">
             <Image
@@ -136,7 +136,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
               className="shadow-md max-h-[400px] object-cover w-full"
             />
           </div>
-          <div className="max-w-800 mx-auto sm:px-4">
+          <div className="max-w-800 mx-auto sm:px-4 bg-white py-4">
             {/* Tytuł */}
             <h1 className="text-4xl font-bold my-4 leading-tight">
               {post?.title?.rendered}
@@ -152,7 +152,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
             </div>
 
             {/* Treść posta */}
-            <section className="prose lg:prose-xl max-w-none">
+            <section className="prose lg:prose-xl max-w-none ">
               <PostContent description={post?.content} />
             </section>
           </div>

@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["sans-serif"],
+      },
       colors: {
         primary: "#f26d89",
         footer: "#302836",
@@ -16,8 +19,8 @@ const config: Config = {
         "white-opacity-11": "rgba(255,255,255,.11)",
       },
       maxWidth: {
-        "1400": "1400px", // Add your custom max width here
-        "800": "800px",
+        "1400": "1400px",
+        "800": "836px",
       },
     },
   },
