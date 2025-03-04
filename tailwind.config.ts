@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["sans-serif"],
+        cormorant: ['"Cormorant Garamond"', "Helvetica", "Arial", "sans-serif"],
       },
       colors: {
         primary: "#f26d89",
@@ -20,7 +21,7 @@ const config: Config = {
       },
       maxWidth: {
         "1400": "1400px",
-        "800": "836px",
+        "800": "1036px",
       },
     },
   },

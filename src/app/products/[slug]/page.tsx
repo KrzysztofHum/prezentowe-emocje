@@ -2,6 +2,7 @@ import Image from "next/image";
 import { fetchProductBySlug, getProducts } from "@/utils/productswp";
 import { Product } from "@/app/types/types";
 import ProductSummary from "@/components/ProductSummary";
+import StepProcess from "@/components/StepProcess";
 
 interface ProductPageProps {
   params: { slug: string };
@@ -49,6 +50,27 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }
   return (
     <>
+      <nav className="max-w-1400 mx-auto py-8 px-4">
+        <ul className="flex items-center space-x-2 text-gray-600">
+          <li>
+            <a href="/" className="hover:text-primary">
+              Strona główna
+            </a>
+          </li>
+          <li>
+            <span className="text-4xl">&#183;</span>
+          </li>
+          <li>
+            <a href="/blog" className="hover:text-primary">
+              Artykuły
+            </a>
+          </li>
+          <li>
+            <span className="text-4xl">&#183;</span>
+          </li>
+          <li className="text-primary font-semibold">Aktualny tytuł</li>
+        </ul>
+      </nav>
       <div className="flex flex-col sm:flex-row max-w-1400 mx-auto sm:px-4 mt-6">
         <div className="sm:w-1/2 lg:w-2/3 w-full">
           <Image
@@ -67,6 +89,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           image={product[0]?.images?.[0]?.src || ""}
         />
       </div>
+      <StepProcess />
       <div className="max-w-1400 mx-auto px-4 pb-6">
         <ProductDescription description={product[0]?.description} />
       </div>

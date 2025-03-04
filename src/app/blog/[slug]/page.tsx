@@ -7,13 +7,13 @@ interface BlogPageProps {
   params: { slug: string };
 }
 
-export async function generateStaticParams() {
-  const posts = await getBlogPosts();
+// export async function generateStaticParams() {
+//   const posts = await getBlogPosts();
 
-  return (posts as unknown as BlogPost[]).map((post) => ({
-    slug: post.slug,
-  }));
-}
+//   return (posts as unknown as BlogPost[]).map((post) => ({
+//     slug: post.slug,
+//   }));
+// }
 
 export async function generateMetadata({ params }: BlogPageProps) {
   const post = await fetchBlogPostBySlug(params.slug);
@@ -129,7 +129,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
           <div className="flex justify-center">
             <Image
               src={post.featured_image_url || "/default-image.jpg"}
-              width={1200}
+              width={1400}
               height={400}
               alt={post?.title?.rendered || "Obrazek wyróżniający"}
               loading="lazy"

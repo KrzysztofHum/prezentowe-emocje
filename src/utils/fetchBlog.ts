@@ -35,7 +35,7 @@ export const getFeaturedImageUrl = async (
   if (!mediaId) return null;
 
   const request_data = {
-    url: `http://localhost/wordpress/wp-json/wp/v2/media/${mediaId}`,
+    url: `http://localhost:8000/wp-json/wp/v2/media/${mediaId}`,
     method: "GET",
   };
 
@@ -57,7 +57,7 @@ export const getFeaturedImageUrl = async (
 
 export const getBlogPosts = async (): Promise<Post[]> => {
   const request_data = {
-    url: "http://localhost/wordpress/wp-json/wp/v2/posts",
+    url: "http://localhost:8000/wp-json/wp/v2/posts",
     method: "GET",
   };
 
@@ -88,7 +88,7 @@ export const fetchBlogPostBySlug = async (
   slug: string
 ): Promise<Post | null> => {
   const request_data = {
-    url: `http://localhost/wordpress/wp-json/wp/v2/posts?slug=${encodeURIComponent(
+    url: `http://localhost:8000/wp-json/wp/v2/posts?slug=${encodeURIComponent(
       slug
     )}`,
     method: "GET",
@@ -106,7 +106,7 @@ export const fetchBlogPostBySlug = async (
     const blogWithImage = {
       ...response.data[0],
       featured_image_url: await getFeaturedImageUrl(
-        response.data[0].featured_media
+        response.data[0]?.featured_media
       ),
     };
 

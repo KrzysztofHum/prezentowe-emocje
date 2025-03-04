@@ -17,6 +17,18 @@ const Cart: React.FC = () => {
   const [subscribeEmail, setSubscribeEmail] = useState(false);
   const [subscribePhone, setSubscribePhone] = useState(false);
 
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    street: "",
+    postalCode: "",
+    city: "",
+    phone: "",
+    email: "",
+    orderNotes: "",
+    paymentMethod: "card",
+  });
+
   useEffect(() => {
     const savedProducts = localStorage.getItem("cart");
     if (savedProducts) {
@@ -25,19 +37,19 @@ const Cart: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(products));
+    localStorage.setItem("products", JSON.stringify(products));
   }, [products]);
 
-  // const handleRemove = (id: number) => {
-  //   setProducts(products.filter((product) => product.id !== id));
-  // };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleRemove = (id: number) => {
     setProducts((prevProducts) => {
       const updatedProducts = prevProducts.filter(
         (product) => product.id !== id
       );
-      localStorage.setItem("cart", JSON.stringify(updatedProducts)); // Update localStorage
+      localStorage.setItem("cart", JSON.stringify(updatedProducts));
       return updatedProducts;
     });
   };
@@ -59,7 +71,7 @@ const Cart: React.FC = () => {
       )
     );
   };
-  const handleInputChange = (
+  const handleInputChangeQty = (
     e: React.ChangeEvent<HTMLInputElement>,
     productId: number
   ) => {
@@ -98,6 +110,77 @@ const Cart: React.FC = () => {
       return "produktów";
     }
   }
+
+  const handleCheckout = async () => {
+    if (!agreeTerms) {
+      alert("Musisz zaakceptować regulamin, aby kontynuować.");
+      return;
+    }
+
+    const cartData = {
+      products,
+      customer: formData,
+      subscribeEmail,
+      subscribePhone,
+      totalPrice: products.reduce(
+        (total, product) => total + product.price * product.quantity,
+        0
+      ),
+      shippingCost: 13.99,
+    };
+
+    try {
+      const response = await fetch(
+        "https://twoja-strona.pl/wp-json/custom/v1/save-cart",
+        {
+          method: "POST",
+          body: JSON.stringify(cartData),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        const { payment_url } = await response.json();
+        window.location.href = payment_url;
+      } else {
+        alert("Wystąpił błąd przy zapisie koszyka.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Wystąpił błąd przy zapisie koszyka.");
+    }
+  };
+
+  // const handleCheckout = async () => {
+  //   try {
+  //     // Zbieranie danych koszyka
+  //     const cartData = "data";
+
+  //     // Wysłanie danych koszyka do WordPressa
+  //     const response = await fetch(
+  //       "https://twoja-strona.pl/wp-json/custom/v1/save-cart",
+  //       {
+  //         method: "POST",
+  //         body: JSON.stringify(cartData),
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+
+  //     if (response.ok) {
+  //       const { payment_url } = await response.json();
+  //       window.location.href = payment_url;
+  //     } else {
+  //       alert("Wystąpił błąd przy zapisie koszyka");
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //     alert("Wystąpił błąd przy zapisie koszyka");
+  //   }
+  // };
 
   return (
     <div className="max-w-1400 m-auto p-4">
@@ -145,7 +228,7 @@ const Cart: React.FC = () => {
                     name="quantity"
                     min="1"
                     value={product.quantity}
-                    onChange={(e) => handleInputChange(e, product.id)}
+                    onChange={(e) => handleInputChangeQty(e, product.id)}
                   />
                   <button
                     className="btn-qty btn-qty-up"
@@ -162,61 +245,89 @@ const Cart: React.FC = () => {
           <form className="flex flex-col">
             <input
               className="inputForm"
+              name="firstName"
               type="text"
               placeholder="Imię"
               required
+              onChange={handleInputChange}
             />
             <input
               className="inputForm"
               type="text"
               placeholder="Nazwisko"
               required
+              name="lastName"
+              onChange={handleInputChange}
             />
             <input
               className="inputForm"
               type="text"
               placeholder="Ulica, number domu/number mieszkania"
               required
+              name="street"
+              onChange={handleInputChange}
             />
             <input
               className="inputForm"
               type="text"
               placeholder="Kod pocztowy"
               required
+              name="postalCode"
+              onChange={handleInputChange}
             />
             <input
               className="inputForm"
               type="text"
               placeholder="Miasto"
               required
+              name="city"
+              onChange={handleInputChange}
             />
             <input
               className="inputForm"
               type="text"
               placeholder="Number telefonu"
               required
+              name="phone"
+              onChange={handleInputChange}
             />
             <input
               className="inputForm"
               type="text"
               placeholder="Adres e-mail"
               required
+              name="email"
+              onChange={handleInputChange}
             />
             <input
               className="inputForm"
               type="text"
               placeholder="Uwagi do zamówienia"
               required
+              name="orderNotes"
+              onChange={handleInputChange}
             />
           </form>
           <h2 className="textH">Płatność</h2>
           <div>
             <label>
-              <input type="radio" name="payment" value="card" defaultChecked />{" "}
+              <input
+                type="radio"
+                name="paymentMethod"
+                value="card"
+                defaultChecked
+                onChange={handleInputChange}
+              />{" "}
               Karta kredytowa
             </label>
             <label>
-              <input type="radio" name="payment" value="paypal" /> PayPal
+              <input
+                type="radio"
+                name="paymentMethod"
+                value="paypal"
+                onChange={handleInputChange}
+              />{" "}
+              PayPal
             </label>
           </div>
         </div>
@@ -288,7 +399,9 @@ const Cart: React.FC = () => {
               </label>
             </div>
           </div>
-          <button className="sectionBtn w-full">Kupuję i płacę</button>
+          <button onClick={handleCheckout} className="sectionBtn w-full">
+            Kupuję i płacę
+          </button>
         </div>
       </div>
     </div>
