@@ -3,6 +3,7 @@ import { fetchProductBySlug, getProducts } from "@/utils/productswp";
 import { Product } from "@/app/types/types";
 import ProductSummary from "@/components/ProductSummary";
 import StepProcess from "@/components/StepProcess";
+import ProductCollection from "@/components/ProductCollection";
 
 interface ProductPageProps {
   params: { slug: string };
@@ -31,7 +32,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({
 }) => {
   return (
     <div
-      className="product-desc"
+      className="product-desc text-lg"
       dangerouslySetInnerHTML={{ __html: description }}
     ></div>
   );
@@ -90,7 +91,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
         />
       </div>
       <StepProcess />
-      <div className="max-w-1400 mx-auto px-4 pb-6">
+      <ProductCollection />
+      <div className="max-w-1400 mx-auto px-4 pb-6 mt-12 pt-12">
         <ProductDescription description={product[0]?.description} />
       </div>
     </>
