@@ -95,6 +95,35 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <div className="max-w-1400 mx-auto px-4 pb-6 mt-12 pt-12">
         <ProductDescription description={product[0]?.description} />
       </div>
+      <section className="bg-gradient-to-br from-[#f26d89] to-[#ff9a9e]">
+        <div>
+          <p className="text-center text-5xl py-12 text-white">
+            Zobacz inne produkty z kategorii
+          </p>
+          <div className="flex justify-center items-center gap-8 pb-16 max-w-[1100px] mx-auto">
+            <div className="bg-white flex justify-center items-center min-h-[60px] border border-gray-200 rounded-lg shadow-md">
+              <p className="p-2 text-lg text-center">
+                Eleganckie zaproszenia ślubne
+              </p>
+            </div>
+            <div className="bg-white flex justify-center items-center min-h-[60px] border border-gray-200 rounded-lg shadow-md">
+              <p className="p-2 text-lg text-center">
+                Zaproszenia ślubne kwiaty
+              </p>
+            </div>
+            <div className="bg-white flex justify-center items-center min-h-[60px] border border-gray-200 rounded-lg shadow-md">
+              <p className="p-2 text-lg text-center">
+                Tanie zaproszenia ślubne
+              </p>
+            </div>
+            <div className="bg-white flex justify-center items-center min-h-[60px] border border-gray-200 rounded-lg shadow-md">
+              <p className="p-2 text-lg text-center">
+                Eleganckie zaproszenia ślubne
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
