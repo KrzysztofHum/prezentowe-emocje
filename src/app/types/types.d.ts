@@ -117,3 +117,18 @@ export interface BlogPost {
     replies?: { embeddable: boolean; href: string }[];
   };
 }
+
+export type Category = {
+  id: number;
+  name: string;
+  slug: string;
+  description?: string;
+  count: number;
+  parent: number;
+  image?: {
+    id: number;
+    src: string;
+    name: string;
+    alt: string;
+  } | null;
+};
