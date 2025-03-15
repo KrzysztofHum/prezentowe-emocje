@@ -40,7 +40,6 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const product = await fetchProductBySlug(params.slug);
-  console.log(product[0]);
 
   if (!product[0]) {
     return (

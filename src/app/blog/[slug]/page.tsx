@@ -58,8 +58,7 @@ const PostContent: React.FC<PostContentProps> = ({ description }) => {
 };
 
 export default async function BlogPage({ params }: BlogPageProps) {
-  const post = await fetchBlogPostBySlug(params.slug);
-  console.log(post);
+  const post = await fetchBlogPostBySlug(params.slug);;
   if (!post) {
     return (
       <div className="flex justify-center items-center h-screen">
