@@ -12,7 +12,7 @@ const CategorySection = () => {
       <div className="grid grid-cols-2 gap-10 p-4 sm:grid-cols-3 lg:grid-cols-6 mt-10">
         <Link
           href="/zaproszenia"
-          className="hover:text-primary flex flex-col items-center text-center"
+          className="hover:text-primary transition-colors duration-300 flex flex-col items-center text-center"
         >
           <Image
             src={`/images/category/zaproszenia.png`}
@@ -25,7 +25,7 @@ const CategorySection = () => {
         </Link>
         <Link
           href="/pudelka-obraczki"
-          className="hover:text-primary flex flex-col items-center text-center"
+          className="hover:text-primary transition-colors duration-300 flex flex-col items-center text-center"
         >
           <Image
             src={`/images/category/pudelka.png`}
@@ -38,7 +38,7 @@ const CategorySection = () => {
         </Link>
         <Link
           href="/pudelka-obraczki"
-          className="hover:text-primary flex flex-col items-center text-center"
+          className="hover:text-primary transition-colors duration-300 flex flex-col items-center text-center"
         >
           <Image
             src={`/images/category/pudelka.png`}
@@ -51,7 +51,7 @@ const CategorySection = () => {
         </Link>
         <Link
           href="/dodatki"
-          className="hover:text-primary flex flex-col items-center text-center"
+          className="hover:text-primary transition-colors duration-300 flex flex-col items-center text-center"
         >
           <Image
             src={`/images/category/dodatki.png`}
@@ -64,7 +64,7 @@ const CategorySection = () => {
         </Link>
         <Link
           href="/pudelka-pieniadze"
-          className="hover:text-primary flex flex-col items-center text-center"
+          className="hover:text-primary transition-colors duration-300 flex flex-col items-center text-center"
         >
           <Image
             src={`/images/category/pieniadze.png`}
@@ -77,7 +77,7 @@ const CategorySection = () => {
         </Link>
         <Link
           href="/pudelka-pieniadze"
-          className="hover:text-primary flex flex-col items-center text-center"
+          className="hover:text-primary transition-colors duration-300 flex flex-col items-center text-center"
         >
           <Image
             src={`/images/category/pieniadze.png`}

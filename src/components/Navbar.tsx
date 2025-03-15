@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +39,7 @@ const Navbar = () => {
             </button>
             {/* Logo */}
             <Link href="/">
-              <div className="text-primary text-4xl font-bold cursor-pointer">
+              <div className="text-primary text-4xl font-bold cursor-pointer pb-4">
                 Prezentowe Love
               </div>
             </Link>
@@ -98,40 +99,40 @@ const Navbar = () => {
           </Link>
         </div>
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6">
+        <div className="hidden md:flex space-x-10">
           <Link
             href="/slub"
-            className="block font-medium text-black hover:text-primary"
+            className="block font-semibold text-black hover:text-primary transition-colors duration-300"
           >
             Ślub
           </Link>
           <Link
             href="/zareczyny"
-            className="block font-medium text-black hover:text-primary"
+            className="block font-semibold text-black hover:text-primary transition-colors duration-300"
           >
             Zaręczyny
           </Link>
           <Link
             href="/komunia"
-            className="block font-medium text-black hover:text-primary"
+            className="block font-semibold text-black hover:text-primary transition-colors duration-300"
           >
             Komunia
           </Link>
           <Link
             href="/dekoracje"
-            className="block font-medium text-black hover:text-primary"
+            className="block font-semibold text-black hover:text-primary transition-colors duration-300"
           >
             Dekoracje
           </Link>
           <Link
             href="/prezenty"
-            className="block font-medium text-black hover:text-primary"
+            className="block font-semibold text-black hover:text-primary transition-colors duration-300"
           >
             Prezenty
           </Link>
           <Link
             href="/blog"
-            className="block font-medium text-black hover:text-primary"
+            className="block font-semibold text-black hover:text-primary transition-colors duration-300"
           >
             Blog
           </Link>
@@ -139,37 +140,35 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden mt-4 space-y-2">
-            <Link href="/slub" className="block text-black hover:text-primary">
-              Ślub
-            </Link>
-            <Link
-              href="/zareczyny"
-              className="block text-black hover:text-primary"
-            >
-              Zaręczyny
-            </Link>
-            <Link
-              href="/komunia"
-              className="block text-black hover:text-primary"
-            >
-              Komunia
-            </Link>
-            <Link
-              href="/dekoracje"
-              className="block font-medium text-black hover:text-primary"
-            >
-              Dekoracje
-            </Link>
-            <Link
-              href="/prezenty"
-              className="block text-black hover:text-primary"
-            >
-              Prezenty
-            </Link>
-            <Link href="/blog" className="block text-black hover:text-primary">
-              Blog
-            </Link>
+          <div className="mt-4 grid grid-cols-2 md:hidden gap-4">
+            {[
+              { href: "/slub", label: "Ślub" },
+              { href: "/zareczyny", label: "Zaręczyny" },
+              { href: "/komunia", label: "Komunia" },
+              { href: "/dekoracje", label: "Dekoracje" },
+              { href: "/prezenty", label: "Prezenty" },
+              { href: "/blog", label: "Blog" },
+            ].map((item, index) => (
+              <Link
+                key={index}
+                href={item.href}
+                className="group block w-full text-center"
+              >
+                <div className="w-full">
+                  <Image
+                    src="/images/category/dodatki.png"
+                    alt={item.label}
+                    layout="responsive"
+                    width={300}
+                    height={400}
+                    className="w-full h-auto aspect-[3/4] object-cover"
+                  />
+                </div>
+                <p className="mt-2 text-black group-hover:text-primary transition-colors duration-300">
+                  {item.label}
+                </p>
+              </Link>
+            ))}
           </div>
         )}
       </div>

@@ -25,7 +25,10 @@ const page = () => {
               </Link>
               <div className="p-4">
                 <h2 className="text-xl font-semibold mb-2">
-                  <Link href="/" className="hover:text-primary">
+                  <Link
+                    href="/"
+                    className="hover:text-primary transition-colors duration-300"
+                  >
                     Jak zaplanować idealne wesele: Poradnik krok po kroku
                   </Link>
                 </h2>

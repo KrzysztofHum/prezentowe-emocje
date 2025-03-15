@@ -84,7 +84,7 @@ const ProductSummary = (product: Product) => {
         <div>Papier: Satynowy 300g</div>
       </div>
       <div>
-        <div className="sectionBtn cursor-pointer hover:text-primary flex items-center justify-center">
+        <div className="sectionBtn cursor-pointer hover:text-primary transition-colors duration-300 flex items-center justify-center">
           <button
             className="flex items-center justify-center space-x-2 font-semibold"
             onClick={handleAddToCart}

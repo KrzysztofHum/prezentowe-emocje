@@ -12,7 +12,7 @@ export const Accessories = () => {
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-4 mt-10">
         <Link
           href="/"
-          className="border-b-2 hover:border-primary hover:text-primary"
+          className="border-b-2 hover:border-primary hover:text-primary transition-colors duration-300"
         >
           <Image
             src={`/images/category/dodatki.png`}
@@ -31,7 +31,7 @@ export const Accessories = () => {
         </Link>
         <Link
           href="/"
-          className="border-b-2 hover:border-primary hover:text-primary"
+          className="border-b-2 hover:border-primary hover:text-primary transition-colors duration-300"
         >
           <Image
             src={`/images/category/dodatki.png`}
@@ -50,7 +50,7 @@ export const Accessories = () => {
         </Link>
         <Link
           href="/"
-          className="border-b-2 hover:border-primary hover:text-primary"
+          className="border-b-2 hover:border-primary hover:text-primary transition-colors duration-300"
         >
           <Image
             src={`/images/category/dodatki.png`}

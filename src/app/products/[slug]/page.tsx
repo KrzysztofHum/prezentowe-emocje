@@ -54,7 +54,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <nav className="max-w-1400 mx-auto py-8 px-4">
         <ul className="flex items-center space-x-2 text-gray-600">
           <li>
-            <a href="/" className="hover:text-primary">
+            <a
+              href="/"
+              className="hover:text-primary transition-colors duration-300"
+            >
               Strona główna
             </a>
           </li>
@@ -62,7 +65,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <span className="text-4xl">&#183;</span>
           </li>
           <li>
-            <a href="/blog" className="hover:text-primary">
+            <a
+              href="/blog"
+              className="hover:text-primary transition-colors duration-300"
+            >
               Artykuły
             </a>
           </li>

@@ -9,7 +9,10 @@ export const InvitationsSection = () => {
         Przegladaj najczesciej kupowane zaproszenia na ślub, komunie, urodziny.
       </p>
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-4 mt-10">
-        <Link href="/zaproszenia-slubne" className="hover:text-primary">
+        <Link
+          href="/zaproszenia-slubne"
+          className="hover:text-primary transition-colors duration-300"
+        >
           <Image
             src={`/images/category/zaproszenia.png`}
             width={300}
@@ -19,7 +22,10 @@ export const InvitationsSection = () => {
           />
           <h2 className="text-xl font-semibold m-1">Zaproszenia Ślubne</h2>
         </Link>
-        <Link href="/zaproszenia-komunijne" className="hover:text-primary">
+        <Link
+          href="/zaproszenia-komunijne"
+          className="hover:text-primary transition-colors duration-300"
+        >
           <Image
             src={`/images/category/zaproszenia.png`}
             width={350}
@@ -29,7 +35,10 @@ export const InvitationsSection = () => {
           />
           <h2 className="text-xl font-semibold m-1">Zaproszenia Komunijne</h2>
         </Link>
-        <Link href="/zaproszenia-urodzinowe" className="hover:text-primary">
+        <Link
+          href="/zaproszenia-urodzinowe"
+          className="hover:text-primary transition-colors duration-300"
+        >
           <Image
             src={`/images/category/zaproszenia.png`}
             width={300}
