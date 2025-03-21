@@ -1,4 +1,4 @@
-import { Category } from "@/app/types/types";
+import { Category, Product } from "@/app/types/types";
 import {
   fetchCategories,
   fetchCategory,
@@ -33,6 +33,8 @@ export async function generateMetadata({
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const products = await fetchCategory(params.slug);
+  const category = await fetchCategoryBySlug(params.slug);
+  console.log(category);
   console.log(products);
   if (!products[0]) {
     return (
@@ -67,7 +69,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </ul>
       </nav>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4">
-        {products.map((product) => (
+        {products.map((product: Product) => (
           <Link
             key={product.id}
             href={`/products/${product.slug}`}
@@ -166,6 +168,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </div>
         </Link>
       </div>
+      <section
+        className="prose max-w-full p-4"
+        dangerouslySetInnerHTML={{ __html: category.description }}
+      />
     </div>
   );
 }

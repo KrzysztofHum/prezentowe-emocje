@@ -37,7 +37,7 @@ export const fetchCategoryBySlug = async (slug: string) => {
 export const fetchCategory = async (slug: string) => {
   const category = await fetchCategoryBySlug(slug);
 
-  if (!category.id) {
+  if (!category?.id) {
     console.error("Błąd: Nie znaleziono ID kategorii!");
     return [];
   }
