@@ -1,5 +1,5 @@
 import { fetchBlogPostBySlug, getBlogPosts } from "@/utils/fetchBlog";
-import { BlogPost } from "@/app/types/types";
+import { BlogPost } from "@/types/types";
 import Image from "next/image";
 import NextHead from "next/head";
 
@@ -58,7 +58,7 @@ const PostContent: React.FC<PostContentProps> = ({ description }) => {
 };
 
 export default async function BlogPage({ params }: BlogPageProps) {
-  const post = await fetchBlogPostBySlug(params.slug);;
+  const post = await fetchBlogPostBySlug(params.slug);
   if (!post) {
     return (
       <div className="flex justify-center items-center h-screen">

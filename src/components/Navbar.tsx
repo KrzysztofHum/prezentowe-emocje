@@ -2,10 +2,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import useCartStore from "@/store/cartStore";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { cart } = useCartStore();
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -94,7 +95,7 @@ const Navbar = () => {
             </svg>
             {/* item counter */}
             <span className="absolute top-0 right-0 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-              3
+              {cart.length}
             </span>
           </Link>
         </div>

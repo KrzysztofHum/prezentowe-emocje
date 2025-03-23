@@ -1,6 +1,6 @@
 "use client";
 
-import useCart from "@/hooks/useCart";
+import useCartStore from "@/store/cartStore";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -12,7 +12,7 @@ interface Product {
     width: string;
     height: string;
   };
-  price: string;
+  price: number;
   image: string;
 }
 
@@ -20,9 +20,9 @@ const ProductSummary = (product: Product) => {
   const router = useRouter();
   const [isInCart, setIsInCart] = useState(false);
   const { id, name, dimensions, price, image } = product;
-  const { addToCart } = useCart();
   const [quantity, setQuantity] = useState<number>(1);
   const newProduct = { id, name, price, image, quantity };
+  const addToCart = useCartStore((state) => state.addToCart);
 
   const handleQuantityChange = (newQuantity: number) => {
     if (newQuantity >= 1) {

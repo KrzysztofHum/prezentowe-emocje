@@ -1,4 +1,4 @@
-import { Category, Product } from "@/app/types/types";
+import { Category, Product } from "@/types/types";
 import {
   fetchCategories,
   fetchCategory,

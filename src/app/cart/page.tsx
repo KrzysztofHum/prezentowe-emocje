@@ -1,17 +1,26 @@
 "use client";
+import useCartStore from "@/store/cartStore";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-
-interface Product {
-  id: number;
-  image: string;
-  name: string;
-  price: number;
-  quantity: number;
-}
+import { useState } from "react";
 
 const Cart: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const { cart, clearCart } = useCartStore();
+  const changeQuantity = useCartStore((state) => state.changeQuantity);
+  const updateQuantity = useCartStore((state) => state.updateQuantity);
+  const removeFromCart = useCartStore((state) => state.removeFromCart);
+
+  const handleQuantityChange = (productId: number, action: "up" | "down") => {
+    changeQuantity(productId, action);
+  };
+  const handleInputChangeQty = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    productId: number
+  ) => {
+    const newQuantity = parseInt(e.target.value, 10);
+    if (newQuantity >= 1) {
+      updateQuantity(productId, newQuantity);
+    }
+  };
 
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [subscribeEmail, setSubscribeEmail] = useState(false);
@@ -29,66 +38,11 @@ const Cart: React.FC = () => {
     paymentMethod: "card",
   });
 
-  useEffect(() => {
-    const savedProducts = localStorage.getItem("cart");
-    if (savedProducts) {
-      setProducts(JSON.parse(savedProducts));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("products", JSON.stringify(products));
-  }, [products]);
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleRemove = (id: number) => {
-    setProducts((prevProducts) => {
-      const updatedProducts = prevProducts.filter(
-        (product) => product.id !== id
-      );
-      localStorage.setItem("cart", JSON.stringify(updatedProducts));
-      return updatedProducts;
-    });
-  };
-
-  const handleQuantityChange = (productId: number, action: "up" | "down") => {
-    setProducts((prevProducts) =>
-      prevProducts.map((product) =>
-        product.id === productId
-          ? {
-              ...product,
-              quantity:
-                action === "up"
-                  ? product.quantity + 1
-                  : product.quantity > 1
-                  ? product.quantity - 1
-                  : product.quantity,
-            }
-          : product
-      )
-    );
-  };
-  const handleInputChangeQty = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    productId: number
-  ) => {
-    const newQuantity = parseInt(e.target.value, 10);
-
-    if (newQuantity >= 1) {
-      setProducts((prevProducts) =>
-        prevProducts.map((product) =>
-          product.id === productId
-            ? { ...product, quantity: newQuantity }
-            : product
-        )
-      );
-    }
-  };
-
-  const totalPrice = products.reduce(
+  const totalPrice = cart.reduce(
     (total, product) => total + product.price * product.quantity,
     0
   );
@@ -100,7 +54,6 @@ const Cart: React.FC = () => {
     const secondLastDigit = Math.floor((count % 100) / 10);
 
     if (secondLastDigit === 1) {
-      // Przypadki 11-14
       return "produktów";
     } else if (lastDigit === 1) {
       return "produkt";
@@ -118,14 +71,11 @@ const Cart: React.FC = () => {
     }
 
     const cartData = {
-      products,
+      cart,
       customer: formData,
       subscribeEmail,
       subscribePhone,
-      totalPrice: products.reduce(
-        (total, product) => total + product.price * product.quantity,
-        0
-      ),
+      totalPrice,
       shippingCost: 13.99,
     };
 
@@ -142,6 +92,7 @@ const Cart: React.FC = () => {
       );
 
       if (response.ok) {
+        clearCart();
         const { payment_url } = await response.json();
         window.location.href = payment_url;
       } else {
@@ -153,44 +104,19 @@ const Cart: React.FC = () => {
     }
   };
 
-  // const handleCheckout = async () => {
-  //   try {
-  //     // Zbieranie danych koszyka
-  //     const cartData = "data";
-
-  //     // Wysłanie danych koszyka do WordPressa
-  //     const response = await fetch(
-  //       "https://twoja-strona.pl/wp-json/custom/v1/save-cart",
-  //       {
-  //         method: "POST",
-  //         body: JSON.stringify(cartData),
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-
-  //     if (response.ok) {
-  //       const { payment_url } = await response.json();
-  //       window.location.href = payment_url;
-  //     } else {
-  //       alert("Wystąpił błąd przy zapisie koszyka");
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //     alert("Wystąpił błąd przy zapisie koszyka");
-  //   }
-  // };
-
   return (
     <div className="max-w-1400 m-auto p-4">
-      <h1 className="textH px-4">
-        Twój koszyk ({products.length} {getProductLabel(products.length)})
-      </h1>
+      {cart.length === 0 ? (
+        <h1 className="textH px-4">Twój koszyk jest pusty</h1>
+      ) : (
+        <h1 className="textH px-4">
+          Twój koszyk ({cart.length} {getProductLabel(cart.length)})
+        </h1>
+      )}
       <div className="md:flex">
         <div className="px-4 md:basis-2/3">
           <div>
-            {products.map((product) => (
+            {cart.map((product) => (
               <div
                 key={product.id}
                 className="border border-gray-300 rounded-lg p-4 my-4"
@@ -210,7 +136,7 @@ const Cart: React.FC = () => {
                     </p>
                   </div>
                   <button
-                    onClick={() => handleRemove(product.id)}
+                    onClick={() => removeFromCart(product.id)}
                     className="ml-auto"
                   >
                     Usuń

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { fetchProductBySlug, getProducts } from "@/utils/productswp";
-import { Product } from "@/app/types/types";
+import { Product } from "@/types/types";
 import ProductSummary from "@/components/ProductSummary";
 import StepProcess from "@/components/StepProcess";
 import ProductCollection from "@/components/ProductCollection";
