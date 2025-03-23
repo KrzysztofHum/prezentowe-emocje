@@ -9,25 +9,25 @@ const Footer = () => {
           <div>
             <p className="mb-2 text-2xl">Ślub</p>
             <div className="flex flex-col">
-              <Link href="">Zaproszenia</Link>
-              <Link href="">Dodatki</Link>
-              <Link href="">Panna młoda</Link>
+              <Link href="">Zaproszenia ślubne</Link>
+              <Link href="">Podziękowania ślubne</Link>
+              <Link href="">Parapetia i dodatki ślubne</Link>
             </div>
           </div>
           <div>
-            <p className="mb-2 text-2xl">Zaręczyny</p>
+            <p className="mb-2 text-2xl">Chrzest</p>
             <div className="flex flex-col">
-              <Link href="">Pudełka na pierścionek</Link>
-              <Link href="">Dodatki</Link>
-              <Link href="">Kwiaty</Link>
+              <Link href="">Zaproszenia na chrzest</Link>
+              <Link href="">Dekoracje na chrzest</Link>
+              <Link href="">Parapetia i dodatki chrzest</Link>
             </div>
           </div>
           <div>
-            <p className="mb-2 text-2xl">Prezenty</p>
+            <p className="mb-2 text-2xl">Komunia</p>
             <div className="flex flex-col">
-              <Link href="">Pudełko na prezent</Link>
-              <Link href="">Pudełko na pieniądze</Link>
-              <Link href="">Kartki z życzeniami</Link>
+              <Link href="">Zaproszenia komunijne</Link>
+              <Link href="">Podziękowania komunijne</Link>
+              <Link href="">Parapetia i dodatki komunijne</Link>
             </div>
           </div>
         </div>
@@ -64,9 +64,6 @@ const Footer = () => {
         <div className="flex md:flex-row-reverse">
           <Link className="px-3" href="/">
             Polityka Prytwatności
-          </Link>
-          <Link className="px-3" href="/">
-            Ustawienia Ciasteczek
           </Link>
           <Link className="px-3" href="/">
             Regulamin

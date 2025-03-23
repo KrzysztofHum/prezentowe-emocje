@@ -107,10 +107,10 @@ const Navbar = () => {
             Ślub
           </Link>
           <Link
-            href="/zareczyny"
+            href="/chrzest"
             className="block font-semibold text-black hover:text-primary transition-colors duration-300"
           >
-            Zaręczyny
+            Chrzest
           </Link>
           <Link
             href="/komunia"
@@ -143,7 +143,7 @@ const Navbar = () => {
           <div className="mt-4 grid grid-cols-2 md:hidden gap-4">
             {[
               { href: "/slub", label: "Ślub" },
-              { href: "/zareczyny", label: "Zaręczyny" },
+              { href: "/chrzest", label: "chrzest" },
               { href: "/komunia", label: "Komunia" },
               { href: "/dekoracje", label: "Dekoracje" },
               { href: "/prezenty", label: "Prezenty" },
