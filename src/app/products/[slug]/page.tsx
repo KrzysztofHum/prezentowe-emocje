@@ -4,6 +4,7 @@ import { Product } from "@/types/types";
 import ProductSummary from "@/components/ProductSummary";
 import StepProcess from "@/components/StepProcess";
 import ProductCollection from "@/components/ProductCollection";
+import Link from "next/link";
 
 interface ProductPageProps {
   params: { slug: string };
@@ -106,27 +107,30 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <p className="text-center text-5xl py-12 text-white">
             Zobacz inne produkty z kategorii
           </p>
-          <div className="flex justify-center items-center gap-8 pb-16 max-w-[1100px] mx-auto">
-            <div className="bg-white flex justify-center items-center min-h-[60px] border border-gray-200 rounded-lg shadow-md">
-              <p className="p-2 text-lg text-center">
-                Eleganckie zaproszenia ślubne
-              </p>
-            </div>
-            <div className="bg-white flex justify-center items-center min-h-[60px] border border-gray-200 rounded-lg shadow-md">
-              <p className="p-2 text-lg text-center">
-                Zaproszenia ślubne kwiaty
-              </p>
-            </div>
-            <div className="bg-white flex justify-center items-center min-h-[60px] border border-gray-200 rounded-lg shadow-md">
-              <p className="p-2 text-lg text-center">
-                Tanie zaproszenia ślubne
-              </p>
-            </div>
-            <div className="bg-white flex justify-center items-center min-h-[60px] border border-gray-200 rounded-lg shadow-md">
-              <p className="p-2 text-lg text-center">
-                Eleganckie zaproszenia ślubne
-              </p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 pb-16 max-w-[1100px] mx-auto px-2 place-items-center">
+            {[
+              { href: "/zaproszenia-slubne", text: "Zaproszenia ślubne" },
+              {
+                href: "/zaproszenia-na-chrzest",
+                text: "Zaproszenia na chrzest",
+              },
+              { href: "/zaproszenia-komunijne", text: "Zaproszenia komunijne" },
+              {
+                href: "/parapetia-dodatki-slubne",
+                text: "Parapetia i dodatki ślubne",
+              },
+            ].map((category, index) => (
+              <Link key={index} href={category.href} passHref className="w-full sm:w-[250px] text-center lg:w-[220px]">
+                <div
+                  key={index}
+                  className="bg-white flex justify-center items-center min-h-[60px] sm:min-h-[100px] border border-gray-200 rounded-lg shadow-md w-full sm:w-[250px] text-center lg:w-[220px] cursor-pointer transition-colors duration-300 hover:bg-[#ffebeb] hover:text-primary"
+                >
+                  <p className="p-4 text-lg text-center w-full">
+                    {category.text}
+                  </p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
