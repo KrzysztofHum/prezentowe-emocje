@@ -9,6 +9,7 @@ interface Product {
   image: string;
   quantity: number;
   slug: string;
+  desc?: string;
 }
 
 interface CartState {

@@ -22,8 +22,13 @@ const ProductSummary = (product: Product) => {
   const [isInCart, setIsInCart] = useState(false);
   const { id, name, dimensions, price, image, slug } = product;
   const [quantity, setQuantity] = useState<number>(1);
-  const newProduct = { id, name, price, image, quantity, slug };
+  const [desc, setDesc] = useState<string>("");
+  const newProduct = { id, name, price, image, quantity, slug, desc };
   const addToCart = useCartStore((state) => state.addToCart);
+
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setDesc(event.target.value);
+  };
 
   const handleQuantityChange = (newQuantity: number) => {
     if (newQuantity >= 1) {
@@ -80,6 +85,23 @@ const ProductSummary = (product: Product) => {
           data-action="up"
           onClick={handleIncrease}
         ></button>
+      </div>
+      <div className="mb-4">
+        <label
+          htmlFor="additionalInfo"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Dodatkowe informacje na produkcie:
+        </label>
+        <textarea
+          id="additionalInfo"
+          name="additionalInfo"
+          rows={4}
+          placeholder="Co ma zawrzeć personalizacja: Imię, nazwisko, data wydarzenia, nr produktu itp."
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          value={desc}
+          onChange={handleChange}
+        />
       </div>
       <div className="text-gray-500 text-sm border-t border-gray-300 pt-4">
         <div>Papier: Satynowy 300g</div>
