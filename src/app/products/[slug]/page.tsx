@@ -6,6 +6,14 @@ import StepProcess from "@/components/StepProcess";
 import ProductCollection from "@/components/ProductCollection";
 import Link from "next/link";
 
+const removeDiacritics = (text: string) => {
+  return text
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-")
+    .toLowerCase();
+};
+
 interface ProductPageProps {
   params: { slug: string };
 }
@@ -41,11 +49,22 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const product = await fetchProductBySlug(params.slug);
-
+  // console.log(product[0].categories[0].name);
   if (!product[0]) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <h1 className="text-xl font-semibold">Produkt nie znaleziony</h1>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+        <p className="mt-4 text-2xl text-gray-600">
+          Ups... Produkt nie został znaleziony!
+        </p>
+        <p className="mt-2 mb-6 text-gray-500 text-center">
+          Wygląda na to, że wpisano niepoprawny adres lub strona została
+          przeniesiona.
+        </p>
+        <Link href="/produkty">
+          <span className="sectionBtn cursor-pointer hover:text-primary transition-colors duration-300">
+            Powrót na stronę z produktami
+          </span>
+        </Link>
       </div>
     );
   }
@@ -66,16 +85,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </li>
           <li>
             <a
-              href="/blog"
+              href={`/${removeDiacritics(product[0]?.categories[0]?.name)}`}
               className="hover:text-primary transition-colors duration-300"
             >
-              Artykuły
+              {product[0]?.categories[0]?.name}
             </a>
           </li>
           <li>
             <span className="text-4xl">&#183;</span>
           </li>
-          <li className="text-primary font-semibold">Aktualny tytuł</li>
+          <li className="text-primary font-semibold">{product[0]?.name}</li>
         </ul>
       </nav>
       <div className="flex flex-col sm:flex-row max-w-1400 mx-auto sm:px-4 mt-6">
@@ -120,7 +139,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 text: "Parapetia i dodatki ślubne",
               },
             ].map((category, index) => (
-              <Link key={index} href={category.href} passHref className="w-full sm:w-[250px] text-center lg:w-[220px]">
+              <Link
+                key={index}
+                href={category.href}
+                passHref
+                className="w-full sm:w-[250px] text-center lg:w-[220px]"
+              >
                 <div
                   key={index}
                   className="bg-white flex justify-center items-center min-h-[60px] sm:min-h-[100px] border border-gray-200 rounded-lg shadow-md w-full sm:w-[250px] text-center lg:w-[220px] cursor-pointer transition-colors duration-300 hover:bg-[#ffebeb] hover:text-primary"

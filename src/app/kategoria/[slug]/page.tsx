@@ -38,8 +38,19 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   console.log(products);
   if (!products[0]) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <h1 className="text-xl font-semibold">Produkt nie znaleziony</h1>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+        <p className="mt-4 text-2xl text-gray-600">
+          Ups... Strona nie został znaleziony!
+        </p>
+        <p className="mt-2 mb-6 text-gray-500 text-center">
+          Wygląda na to, że wpisano niepoprawny adres lub strona została
+          przeniesiona.
+        </p>
+        <Link href="/">
+          <span className="sectionBtn cursor-pointer hover:text-primary transition-colors duration-300">
+            Powrót na stronę główną
+          </span>
+        </Link>
       </div>
     );
   }

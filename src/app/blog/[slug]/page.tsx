@@ -2,18 +2,19 @@ import { fetchBlogPostBySlug, getBlogPosts } from "@/utils/fetchBlog";
 import { BlogPost } from "@/types/types";
 import Image from "next/image";
 import NextHead from "next/head";
+import Link from "next/link";
 
 interface BlogPageProps {
   params: { slug: string };
 }
 
-// export async function generateStaticParams() {
-//   const posts = await getBlogPosts();
+export async function generateStaticParams() {
+  const posts = await getBlogPosts();
 
-//   return (posts as unknown as BlogPost[]).map((post) => ({
-//     slug: post.slug,
-//   }));
-// }
+  return (posts as unknown as BlogPost[]).map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export async function generateMetadata({ params }: BlogPageProps) {
   const post = await fetchBlogPostBySlug(params.slug);
@@ -61,8 +62,19 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const post = await fetchBlogPostBySlug(params.slug);
   if (!post) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <h1 className="text-xl font-semibold">Wpis nie znaleziony</h1>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+        <p className="mt-4 text-2xl text-gray-600">
+          Ups... Wpis nie został znaleziony!
+        </p>
+        <p className="mt-2 mb-6 text-gray-500 text-center">
+          Wygląda na to, że wpisano niepoprawny adres lub strona została
+          przeniesiona.
+        </p>
+        <Link href="/blog">
+          <span className="sectionBtn cursor-pointer hover:text-primary transition-colors duration-300">
+            Powrót na stronę z artykułami
+          </span>
+        </Link>
       </div>
     );
   }
@@ -125,7 +137,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
           <li>
             <span className="text-4xl">&#183;</span>
           </li>
-          <li className="text-primary font-semibold">Aktualny tytuł</li>
+          <li className="text-primary font-semibold">
+            {post?.title?.rendered}
+          </li>
         </ul>
       </nav>
       <main>
