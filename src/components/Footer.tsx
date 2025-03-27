@@ -9,34 +9,43 @@ const Footer = () => {
           <div>
             <p className="mb-2 text-2xl">Ślub</p>
             <div className="flex flex-col">
-              <Link href="">Zaproszenia ślubne</Link>
-              <Link href="">Podziękowania ślubne</Link>
-              <Link href="">Parapetia i dodatki ślubne</Link>
+              <Link href="/zaproszenia-slubne">Zaproszenia ślubne</Link>
+              <Link href="/podziekowania-slubne">Podziękowania ślubne</Link>
+              <Link href="/parapetia-dodatki-slubne">
+                Parapetia i dodatki ślubne
+              </Link>
             </div>
           </div>
           <div>
             <p className="mb-2 text-2xl">Chrzest</p>
             <div className="flex flex-col">
-              <Link href="">Zaproszenia na chrzest</Link>
-              <Link href="">Dekoracje na chrzest</Link>
-              <Link href="">Parapetia i dodatki chrzest</Link>
+              <Link href="/zaproszenia-na-chrzest">Zaproszenia na chrzest</Link>
+              <Link href="/dekoracje-na-chrzest">Dekoracje na chrzest</Link>
+              <Link href="/parapetia-dodatki-komunijne">
+                Parapetia i dodatki chrzest
+              </Link>
             </div>
           </div>
           <div>
             <p className="mb-2 text-2xl">Komunia</p>
             <div className="flex flex-col">
-              <Link href="">Zaproszenia komunijne</Link>
-              <Link href="">Podziękowania komunijne</Link>
-              <Link href="">Parapetia i dodatki komunijne</Link>
+              <Link href="/zaproszenia-komunijne">Zaproszenia komunijne</Link>
+              <Link href="/podziekowania-komunijne">
+                Podziękowania komunijne
+              </Link>
+              <Link href="/parapetia-dodatki-komunijne">
+                Parapetia i dodatki komunijne
+              </Link>
             </div>
           </div>
         </div>
         <div className="md:basis-1/3 md:border-l md:border-l-white-opacity-11">
           <div className="md:pl-12 md:py-8 py-4">
-            <p className="mb-2 text-2xl">Kontakt</p>
+            <p className="mb-2 text-2xl">Kontakt:</p>
             <div className="leading-6">
               <p>Prezentowe-Emocje</p>
               <p>+48 512722333</p>
+              <p>dodajemail@wp.pl</p>
             </div>
           </div>
           <div className="md:border-t md:border-t-white-opacity-11 md:pl-12 md:py-8 py-4">
@@ -62,10 +71,10 @@ const Footer = () => {
       </div>
       <div className="flex flex-col md:flex-row justify-between border-t border-t-white-opacity-11 md:py-5 py-2 md:px-16 px-4">
         <div className="flex md:flex-row-reverse">
-          <Link className="px-3" href="/">
+          <Link className="px-3" href="/polityka-prywatnosci">
             Polityka Prytwatności
           </Link>
-          <Link className="px-3" href="/">
+          <Link className="px-3" href="/regulamin">
             Regulamin
           </Link>
         </div>

@@ -46,10 +46,10 @@ export const InvitationsSection = () => {
             alt="Picture of the author"
             className="w-[350px] h-[300px] object-cover"
           />
-          <h2 className="text-xl font-semibold m-1">Zaproszenia Urodzinowe</h2>
+          <h2 className="text-xl font-semibold m-1">Zaproszenia na Chrzest</h2>
         </Link>
       </div>
-      <Link className="sectionBtn" href="/zaproszenia">
+      <Link className="sectionBtn" href="/zaproszenia-na-chrzest">
         Zobacz Wszystkie
       </Link>
     </section>

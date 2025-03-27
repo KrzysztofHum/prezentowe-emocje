@@ -145,7 +145,6 @@ const Cart: React.FC = () => {
   const totalToPay = totalPrice + shippingCost;
 
   const handleCheckout = async () => {
-
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -213,15 +212,21 @@ const Cart: React.FC = () => {
                 className="border border-gray-300 rounded-lg p-4 my-4"
               >
                 <div className="flex items-center border-b border-gray-300">
-                  <Image
-                    className="max-h-[80px] max-w-[90px] mr-2"
-                    src={product.image}
-                    alt={product.name}
-                    width={400}
-                    height={400}
-                  />
+                  <Link href={`/products/${product.slug}`} className="block">
+                    <Image
+                      className="max-h-[80px] max-w-[90px] mr-2 cursor-pointer"
+                      src={product.image}
+                      alt={product.name}
+                      width={400}
+                      height={400}
+                    />
+                  </Link>
                   <div>
-                    <h2 className="w-full">{product.name}</h2>
+                    <h2 className="w-full">
+                      <Link href={`/products/${product.slug}`}>
+                        {product.name}
+                      </Link>
+                    </h2>
                     <p className="text-primary font-medium text-2xl py-2">
                       {product.price} zł
                     </p>

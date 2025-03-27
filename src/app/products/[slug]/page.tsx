@@ -93,6 +93,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           dimensions={product[0]?.dimensions}
           price={product[0]?.price}
           image={product[0]?.images?.[0]?.src || ""}
+          slug={product[0]?.slug}
         />
       </div>
       <StepProcess />

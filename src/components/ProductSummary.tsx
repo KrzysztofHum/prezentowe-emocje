@@ -14,14 +14,15 @@ interface Product {
   };
   price: number;
   image: string;
+  slug: string;
 }
 
 const ProductSummary = (product: Product) => {
   const router = useRouter();
   const [isInCart, setIsInCart] = useState(false);
-  const { id, name, dimensions, price, image } = product;
+  const { id, name, dimensions, price, image, slug } = product;
   const [quantity, setQuantity] = useState<number>(1);
-  const newProduct = { id, name, price, image, quantity };
+  const newProduct = { id, name, price, image, quantity, slug };
   const addToCart = useCartStore((state) => state.addToCart);
 
   const handleQuantityChange = (newQuantity: number) => {

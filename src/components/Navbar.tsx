@@ -12,7 +12,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-[0_20px_20px_0_rgba(0,0,0,0.04)]">
+    <nav className="shadow-[0_20px_20px_0_rgba(0,0,0,0.04)] bg-[#ffebeb]">
       <div className=" max-w-1400 mx-auto p-4">
         <div className="flex items-center justify-between ">
           <div className="flex">
@@ -40,16 +40,19 @@ const Navbar = () => {
             </button>
             {/* Logo */}
             <Link href="/">
-              <div className="text-primary text-4xl font-bold cursor-pointer pb-4">
-                Prezentowe Love
-              </div>
+              <Image
+                src={`/images/logope.png`}
+                width={300}
+                height={70}
+                alt="Picture of the author"
+              />
             </Link>
           </div>
           {/* Basket */}
           <Link href="/cart" className="relative group">
             <svg
-              width="48"
-              height="48"
+              width="54"
+              height="54"
               viewBox="0 0 48 48"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -94,13 +97,13 @@ const Navbar = () => {
               ></path>
             </svg>
             {/* item counter */}
-            <span className="absolute top-0 right-0 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+            <span className="absolute top-0 right-0 bg-primary text-white text-xm rounded-full w-5 h-5 flex items-center justify-center">
               {cart.length}
             </span>
           </Link>
         </div>
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-10">
+        <div className="hidden md:flex space-x-10 pt-4 text-xl">
           <Link
             href="/slub"
             className="block font-semibold text-black hover:text-primary transition-colors duration-300"

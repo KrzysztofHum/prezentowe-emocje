@@ -8,6 +8,7 @@ interface Product {
   price: number;
   image: string;
   quantity: number;
+  slug: string;
 }
 
 interface CartState {

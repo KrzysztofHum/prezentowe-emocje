@@ -24,7 +24,7 @@ const CategorySection = () => {
           <h2 className="text-xl font-semibold m-1">Zaproszenia</h2>
         </Link>
         <Link
-          href="/pudelka-obraczki"
+          href="/pudelka-na-obraczki"
           className="hover:text-primary transition-colors duration-300 flex flex-col items-center text-center"
         >
           <Image
@@ -37,7 +37,7 @@ const CategorySection = () => {
           <h2 className="text-xl font-semibold m-1">Pudełka na obrączki</h2>
         </Link>
         <Link
-          href="/pudelka-obraczki"
+          href="/dekoracje"
           className="hover:text-primary transition-colors duration-300 flex flex-col items-center text-center"
         >
           <Image
@@ -47,7 +47,7 @@ const CategorySection = () => {
             alt="Picture of the author"
             className="w-[150px] h-[150px] object-cover rounded-full"
           />
-          <h2 className="text-xl font-semibold m-1">Pudełka na obrączki</h2>
+          <h2 className="text-xl font-semibold m-1">Dekoracje</h2>
         </Link>
         <Link
           href="/dodatki"
@@ -86,7 +86,7 @@ const CategorySection = () => {
             alt="Picture of the author"
             className="w-[150px] h-[150px] object-cover rounded-full"
           />
-          <h2 className="text-xl font-semibold m-1">Pudełka na pieniądze</h2>
+          <h2 className="text-xl font-semibold m-1">Podziękowania</h2>
         </Link>
       </div>
     </section>
