@@ -34,8 +34,6 @@ export async function generateMetadata({
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const products = await fetchCategory(params.slug);
   const category = await fetchCategoryBySlug(params.slug);
-  console.log(category);
-  console.log(products);
   if (!products[0]) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">

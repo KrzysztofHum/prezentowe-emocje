@@ -43,7 +43,7 @@ const Footer = () => {
           <div className="md:pl-12 md:py-8 py-4">
             <p className="mb-2 text-2xl">Kontakt:</p>
             <div className="leading-6">
-              <p>Prezentowe-Emocje</p>
+              <p>Prezentowy Świat</p>
               <p>+48 512722333</p>
               <p>dodajemail@wp.pl</p>
             </div>

@@ -167,31 +167,73 @@ const Cart: React.FC = () => {
       subscribePhone,
       shippingCost,
       totalPrice,
+      totalToPay,
     };
+    console.log(selectedPayment);
+    if (selectedPayment === "Przelew Tradycyjny") {
+      console.log(selectedPayment, "33");
+      await fetch("/api/send-order-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          customer: formData,
+          orderDetails: `${cart.map(
+            (product) =>
+              `Produkt: ${product.name}, Ilość: ${product.quantity}, Cena: ${product.price} zł\n`
+          )}\nSuma zamówienia: ${totalPrice} zł\nKoszt wysyłki: ${shippingCost} zł\nMetoda dostawy: ${selectedOption.name}\nPłatność przez: ${selectedPayment}`,
+          paymentInfo: `Kwota do zapłaty: ${totalToPay} PLN\nDane do przelewu: 36 1020 3570 0000 2902 0076 8168`,
+        }),
+      });
+      try {
+        const response = await fetch(
+          "https://twoja-strona.pl/wp-json/custom/v1/save-cart",
+          {
+            method: "POST",
+            body: JSON.stringify(cartData),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
-    try {
-      const response = await fetch(
-        "https://twoja-strona.pl/wp-json/custom/v1/save-cart",
-        {
-          method: "POST",
-          body: JSON.stringify(cartData),
-          headers: {
-            "Content-Type": "application/json",
-          },
+        if (response.ok) {
+          clearCart();
+          const { payment_url } = await response.json();
+          window.location.href = payment_url;
+        } else {
+          alert("Wystąpił błąd przy zapisie koszyka.");
         }
-      );
-
-      if (response.ok) {
-        clearCart();
-        const { payment_url } = await response.json();
-        window.location.href = payment_url;
-      } else {
+      } catch (error) {
+        console.error(error);
         alert("Wystąpił błąd przy zapisie koszyka.");
       }
-    } catch (error) {
-      console.error(error);
-      alert("Wystąpił błąd przy zapisie koszyka.");
     }
+
+    // try {
+    //   const response = await fetch(
+    //     "https://twoja-strona.pl/wp-json/custom/v1/save-cart",
+    //     {
+    //       method: "POST",
+    //       body: JSON.stringify(cartData),
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     }
+    //   );
+
+    //   if (response.ok) {
+    //     clearCart();
+    //     const { payment_url } = await response.json();
+    //     window.location.href = payment_url;
+    //   } else {
+    //     alert("Wystąpił błąd przy zapisie koszyka.");
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    //   alert("Wystąpił błąd przy zapisie koszyka.");
+    // }
   };
 
   return (
