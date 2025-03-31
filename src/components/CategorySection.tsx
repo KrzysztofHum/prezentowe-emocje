@@ -50,7 +50,7 @@ const CategorySection = () => {
           <h2 className="text-xl font-semibold m-1">Dekoracje</h2>
         </Link>
         <Link
-          href="/dodatki"
+          href="/parapetia-dodatki-slubne"
           className="hover:text-primary transition-colors duration-300 flex flex-col items-center text-center"
         >
           <Image

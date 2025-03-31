@@ -49,7 +49,7 @@ export const InvitationsSection = () => {
           <h2 className="text-xl font-semibold m-1">Zaproszenia na Chrzest</h2>
         </Link>
       </div>
-      <Link className="sectionBtn" href="/zaproszenia-na-chrzest">
+      <Link className="sectionBtn" href="/zaproszenia">
         Zobacz Wszystkie
       </Link>
     </section>

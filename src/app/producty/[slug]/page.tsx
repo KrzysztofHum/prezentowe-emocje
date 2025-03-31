@@ -49,7 +49,6 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const product = await fetchProductBySlug(params.slug);
-  // console.log(product[0].categories[0].name);
   if (!product[0]) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">

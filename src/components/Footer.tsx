@@ -21,7 +21,7 @@ const Footer = () => {
             <div className="flex flex-col">
               <Link href="/zaproszenia-na-chrzest">Zaproszenia na chrzest</Link>
               <Link href="/dekoracje-na-chrzest">Dekoracje na chrzest</Link>
-              <Link href="/parapetia-dodatki-komunijne">
+              <Link href="/parapetia-dodatki-chrzest">
                 Parapetia i dodatki chrzest
               </Link>
             </div>
@@ -80,7 +80,7 @@ const Footer = () => {
         </div>
         <div className="my-2 md:my-0">
           <p>
-            © {new Date().getFullYear()} Prezentowe-Emocje. All Rights reserved.
+            © {new Date().getFullYear()} Prezentowy Świat. All Rights reserved.
           </p>
         </div>
       </div>

@@ -26,7 +26,7 @@ export async function generateMetadata({
   const category = await fetchCategoryBySlug(params.slug);
   return {
     title: category
-      ? `${category.name} - Prezentowe Emocje`
+      ? `${category.name} - Prezentowy Świat`
       : "Kategoria nie znaleziona",
   };
 }

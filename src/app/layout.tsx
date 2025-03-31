@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
-  title: "Prezentowe emocje",
+  title: "Prezentowy Świat",
   description: "Emocje sięgaja zenitu",
 };
 

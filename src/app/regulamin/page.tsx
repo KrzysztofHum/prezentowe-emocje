@@ -10,8 +10,8 @@ const regulamin = () => {
       </div>
       <div className="p-1">
         <strong>Kontak ze Sklepem:</strong>
-        <Link href="/">https://prezentowe-emocje.pl/</Link> bądź poprzez adres
-        email biuro@prezentowe-emocje.pl{" "}
+        <Link href="/">https://prezentowyswiat.pl/</Link> bądź poprzez adres
+        email biuro@prezentowyswiat.pl{" "}
       </div>
       <div className="pl-8 p-1">
         <strong>1. Postanowienia ogólne</strong>
@@ -66,7 +66,7 @@ const regulamin = () => {
       <div>
         <strong>Serwisie</strong> - należy przez to rozumieć portal internetowy
         działający pod adresem internetowym{" "}
-        <Link href="/">https://prezentowe-emocje.pl/</Link>
+        <Link href="/">https://prezentowyswiat.pl/</Link>
         prowadzony przez Sklep, zajmujący się sprzedażą detaliczną;
       </div>
       <div>
@@ -75,7 +75,7 @@ const regulamin = () => {
         nierejestrowanej zgodnie z art. 5 Ustawy z dnia 6 marca 2018 r. – Prawo
         przedsiębiorców, działającą pod imieniem i nazwiskiem: Krzysztof
         Humienny, adres do korespondencji: Sojowa 29A/4 Gdynia 81-589, adres
-        e-mail: biuro@prezentowe-emocje.pl;
+        e-mail: biuro@prezentowyswiat.pl;
       </div>
       <div>
         <strong>Towarze</strong> - należy przez to rozumieć produkty oferowane w
@@ -117,8 +117,8 @@ const regulamin = () => {
         należy podać nadany przez Sklep numer Zamówienia. Sklep, po otrzymaniu
         100% należności za zakupione produkty, w ciągu 2 dni roboczych
         przystępuje do realizacji Zamówienia. Sklep przyjmuje Zamówienia, pod
-        adresem <Link href="/">https://prezentowe-emocje.pl/</Link>, 24-godziny
-        na dobę w ciągu całego roku. Zamówienia złożone w dni powszednie po
+        adresem <Link href="/">https://prezentowyswiat.pl/</Link>, 24-godziny na
+        dobę w ciągu całego roku. Zamówienia złożone w dni powszednie po
         godzinie 16:00 oraz soboty, niedziele i święta, będą rozpatrywane
         pierwszego dnia roboczego następującego po złożeniu Zamówienia. Sklep
         zastrzega, iż zdjęcia oferowanych Towarów, znajdujące się na stronach
@@ -368,7 +368,7 @@ const regulamin = () => {
         wynagrodzenie są nadmierne, podstawą obliczenia tej kwoty jest wartość
         rynkowa spełnionego świadczenia. Zgłoszenia dotyczące odstąpienia od
         umowy/anulacji/zwrotu prosimy o kierowanie swoich zgłoszeń bezpośrednio
-        przez adres mailowy: biuro@prezentowe-emocje.pl
+        przez adres mailowy: biuro@prezentowyswiat.pl
       </div>
       <div className="p-1 pl-8">
         <strong>11. Reklamacje</strong>
@@ -376,17 +376,16 @@ const regulamin = () => {
       <div>
         Przy reklamacji Towaru Zamawiający zobowiązany jest poinformować o tym
         Sklep za pośrednictwem poczty elektronicznej pisząc na adres e-mail:
-        biuro@prezentowe-emocje.pl, podając w tytule wiadomości numer
-        Zamówienia, a w treści wiadomości obowiązany jest podać dane osobowe,
-        numer rachunku bankowego oraz wysłać zamówiony Towar na adres Sklepu.
-        Zamawiający jest zobowiązany zabezpieczyć Towar tak, aby nie uległ
-        zniszczeniu podczas transportu. Sklep nie odbiera zwrotnych paczek
-        wysłanych przez Zamawiających za pobraniem. Zwrot ceny zakupionego
-        Towaru na rzecz Zamawiającego nastąpi w terminie 14 dni od dnia
-        dostarczenia zwracanego Towaru do Sklepu, pod warunkiem dopełnienia
-        pozostałych warunków. W przypadku wystąpienia wady zakupionego w Sklepie
-        Towaru Zamawiający ma prawo do reklamacji zgodnie z obowiązującymi
-        przepisami.
+        biuro@prezentowyswiat.pl, podając w tytule wiadomości numer Zamówienia,
+        a w treści wiadomości obowiązany jest podać dane osobowe, numer rachunku
+        bankowego oraz wysłać zamówiony Towar na adres Sklepu. Zamawiający jest
+        zobowiązany zabezpieczyć Towar tak, aby nie uległ zniszczeniu podczas
+        transportu. Sklep nie odbiera zwrotnych paczek wysłanych przez
+        Zamawiających za pobraniem. Zwrot ceny zakupionego Towaru na rzecz
+        Zamawiającego nastąpi w terminie 14 dni od dnia dostarczenia zwracanego
+        Towaru do Sklepu, pod warunkiem dopełnienia pozostałych warunków. W
+        przypadku wystąpienia wady zakupionego w Sklepie Towaru Zamawiający ma
+        prawo do reklamacji zgodnie z obowiązującymi przepisami.
       </div>
       <div className="p-1 pl-8">
         <strong>
@@ -438,7 +437,7 @@ const regulamin = () => {
         poprzez związanie się Regulaminem. Zamawiający może uzyskać nieodpłatny
         dostęp do Regulaminu w każdym czasie za pośrednictwem odsyłacza
         zamieszczonego na stronie głównej Serwisu:
-        <Link href="/">https://prezentowe-emocje.pl/regulamin</Link>. Sklep
+        <Link href="/">https://prezentowyswiat.pl/regulamin</Link>. Sklep
         zastrzega, że Serwis oraz zawarte w nim elementy graficzne, logotypy,
         rozwiązania nawigacyjne, wybór i układ prezentowanych w ramach Serwisu
         treści stanowią przedmiot praw wyłącznych Sklepu. Zmiana danych
@@ -460,7 +459,7 @@ const regulamin = () => {
         treścią Regulaminu w przypadku wyrażenia zgody na jego treść.
       </div>
       <div className="py-8 text-blue-800">
-        <Link href="https://prezentowe-emocje.pl">
+        <Link href="https://prezentowyswiat.pl">
           załącznik nr 1 do Regulaminu.
         </Link>
       </div>

@@ -567,8 +567,8 @@ const Cart: React.FC = () => {
                 onChange={(e) => setSubscribeEmail(e.target.checked)}
               />
               <label htmlFor="subscribeEmail" className="ml-1">
-                Chcę otrzymywać od PrezentoweEmocje informacje handlowe
-                dotyczące PrezentoweEmocje i jej partnerów, na podany przeze
+                Chcę otrzymywać od Prezentowyswiat informacje handlowe
+                dotyczące Prezentowyswiat i jej partnerów, na podany przeze
                 mnie adres e-mail.
               </label>
             </div>
@@ -580,8 +580,8 @@ const Cart: React.FC = () => {
                 id="subscribePhone"
               />
               <label htmlFor="subscribePhone" className="ml-1">
-                Chcę otrzymywać od PrezentoweEmocje informacje handlowe
-                dotyczące PrezentoweEmocje i jej partnerów, na podany przeze
+                Chcę otrzymywać od Prezentowyswiat informacje handlowe
+                dotyczące prezentowyswiat i jej partnerów, na podany przeze
                 mnie numer telefonu.
               </label>
             </div>

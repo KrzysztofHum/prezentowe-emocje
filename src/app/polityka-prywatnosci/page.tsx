@@ -13,10 +13,10 @@ const PrivacyPolicy = () => {
           1. Niniejsza Polityka prywatności opisuje sposób, w jaki postępujemy z
           Danymi Osobowymi zbieranymi za pośrednictwem strony internetowej:{" "}
           <a
-            href="https://prezentowe-emocje.pl"
+            href="https://prezentowyswiat.pl"
             className="text-blue-600 hover:underline"
           >
-            https://prezentowe-emocje.pl
+            https://prezentowyswiat.pl
           </a>
           , a także Danymi Osobowymi zbieranymi za pośrednictwem poczty
           elektronicznej (e-mail) lub innych środków komunikacji elektronicznej.
@@ -36,7 +36,7 @@ const PrivacyPolicy = () => {
         <p>
           4. Wszelkie określenia pisane wielką literą (np. Serwis, Dane Osobowe)
           należy rozumieć zgodnie z ich definicją zawartą w Regulaminie
-          dostępnym na stronie https://prezentowe-emocje/regulamin/, chyba że w
+          dostępnym na stronie https://prezentowyswiat/regulamin/, chyba że w
           treści niniejszej Polityki Prywatności wyraźnie zastrzeżono inaczej.
         </p>
       </section>
@@ -324,7 +324,7 @@ const PrivacyPolicy = () => {
             Krzysztof Humienny adres korenspodencyjny: Sojowa 29a/4 81-589
             Gdynia
           </li>
-          <li>e-mail: biuro@prezentowe-emocje.pl</li>
+          <li>e-mail: biuro@prezentowyswiat.pl</li>
         </ul>
         <p className="py-2">
           Administrator zastrzega sobie prawo realizacji Twoich uprawnień

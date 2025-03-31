@@ -65,7 +65,7 @@ const CookieConsent = () => {
             <p className="mt-2 text-xs text-gray-600">
               Więcej informacji znajdziesz w naszej{" "}
               <a
-                href="https://prezentowe-emocje.pl/polityka-prywatnosci"
+                href="https://prezentowyswiat.pl/polityka-prywatnosci"
                 className="text-primary hover:underline"
               >
                 Polityce Prywatności.
@@ -271,7 +271,7 @@ const CookieConsent = () => {
           <>
             <h2 className="text-lg font-semibold">Pliki Cookies</h2>
             <p className="mt-2 text-[10px] text-gray-600">
-              Prezentowe-emocje korzysta z plików cookie (tzw. ciasteczek) by
+              Prezentowyswiate korzysta z plików cookie (tzw. ciasteczek) by
               zapewnić właściwe funkcjonowanie serwisu i tworzyć bezpieczną i
               wygodną przestrzeń dla Twoich zakupów. Wybierając opcję “Akceptuję
               Ciasteczka”, wyrażasz zgodę na stosowanie plików cookie i innych
@@ -287,7 +287,7 @@ const CookieConsent = () => {
               temat ciasteczek oraz administratora Twoich danych znajdziesz w
               naszej{" "}
               <a
-                href="https://prezentowe-emocje.pl/polityka-prywatnosci"
+                href="https://prezentowyswiat.pl/polityka-prywatnosci"
                 className="text-primary hover:underline"
               >
                 polityce prywatności.
