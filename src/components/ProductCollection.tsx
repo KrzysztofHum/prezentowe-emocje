@@ -36,17 +36,17 @@ const ProductCollection = () => {
         <div className="mb-8 grid grid-cols-1 md:grid-cols-3 gap-3">
           {[
             {
-              href: "/zaproszenia-slubne",
+              href: "/kategoria/zaproszenia-slubne",
               text: "Zaproszenia ślubne",
               price: "33",
             },
             {
-              href: "/zaproszenia-na-chrzest",
+              href: "/kategoria/zaproszenia-na-chrzest",
               text: "Zaproszenia na chrzest",
               price: "22",
             },
             {
-              href: "/zaproszenia-komunijne",
+              href: "/kategoria/zaproszenia-komunijne",
               text: "Zaproszenia komunijne",
               price: "11",
             },

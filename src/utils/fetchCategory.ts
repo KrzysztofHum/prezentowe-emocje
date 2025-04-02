@@ -14,7 +14,7 @@ const oauth = new OAuth({
 
 export const fetchCategoryBySlug = async (slug: string) => {
   const request_data = {
-    url: `http://localhost:8000/wp-json/wc/v3/products/categories?slug=${encodeURIComponent(
+    url: `https://wordpress.prezentowyswiat.pl/wp/wp-json/wc/v3/products/categories?slug=${encodeURIComponent(
       slug
     )}`,
     method: "GET",
@@ -43,7 +43,7 @@ export const fetchCategory = async (slug: string) => {
   }
 
   const request_data = {
-    url: `http://localhost:8000/wp-json/wc/v3/products?category=${category.id}`,
+    url: `https://wordpress.prezentowyswiat.pl/wp/wp-json/wc/v3/products?category=${category.id}`,
     method: "GET",
   };
   const authHeader = oauth.toHeader(oauth.authorize(request_data));
@@ -63,7 +63,7 @@ export const fetchCategory = async (slug: string) => {
 
 export async function fetchCategories() {
   const request_data = {
-    url: `http://localhost:8000/wp-json/wc/v3/products/categories?per_page=100`,
+    url: `https://wordpress.prezentowyswiat.pl/wp/wp-json/wc/v3/products/categories?per_page=100`,
     method: "GET",
   };
   const authHeader = oauth.toHeader(oauth.authorize(request_data));

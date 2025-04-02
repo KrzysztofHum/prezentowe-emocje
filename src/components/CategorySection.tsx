@@ -11,7 +11,7 @@ const CategorySection = () => {
       </p>
       <div className="grid grid-cols-2 gap-10 p-4 sm:grid-cols-3 lg:grid-cols-6 mt-10">
         <Link
-          href="/zaproszenia"
+          href="/kategoria/zaproszenia"
           className="hover:text-primary transition-colors duration-300 flex flex-col items-center text-center"
         >
           <Image
@@ -24,7 +24,7 @@ const CategorySection = () => {
           <h2 className="text-xl font-semibold m-1">Zaproszenia</h2>
         </Link>
         <Link
-          href="/pudelka-na-obraczki"
+          href="/kategoria/pudelka-na-obraczki"
           className="hover:text-primary transition-colors duration-300 flex flex-col items-center text-center"
         >
           <Image
@@ -37,7 +37,7 @@ const CategorySection = () => {
           <h2 className="text-xl font-semibold m-1">Pudełka na obrączki</h2>
         </Link>
         <Link
-          href="/dekoracje"
+          href="/kategoria/dekoracje"
           className="hover:text-primary transition-colors duration-300 flex flex-col items-center text-center"
         >
           <Image
@@ -50,7 +50,7 @@ const CategorySection = () => {
           <h2 className="text-xl font-semibold m-1">Dekoracje</h2>
         </Link>
         <Link
-          href="/parapetia-dodatki-slubne"
+          href="/kategoria/parapetia-dodatki-slubne"
           className="hover:text-primary transition-colors duration-300 flex flex-col items-center text-center"
         >
           <Image
@@ -63,7 +63,7 @@ const CategorySection = () => {
           <h2 className="text-xl font-semibold m-1">Dodatki ślubne</h2>
         </Link>
         <Link
-          href="/pudelka-pieniadze"
+          href="/kategoria/pudelka-na-pieniadze"
           className="hover:text-primary transition-colors duration-300 flex flex-col items-center text-center"
         >
           <Image
@@ -76,7 +76,7 @@ const CategorySection = () => {
           <h2 className="text-xl font-semibold m-1">Pudełka na pieniądze</h2>
         </Link>
         <Link
-          href="/pudelka-pieniadze"
+          href="/kategoria/podziekowania"
           className="hover:text-primary transition-colors duration-300 flex flex-col items-center text-center"
         >
           <Image

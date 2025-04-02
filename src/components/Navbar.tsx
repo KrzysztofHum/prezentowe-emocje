@@ -41,7 +41,7 @@ const Navbar = () => {
             {/* Logo */}
             <Link href="/">
               <Image
-                src={`/images/logope.png`}
+                src={`/images/logo.png`}
                 width={300}
                 height={70}
                 alt="Picture of the author"
@@ -105,31 +105,31 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-10 pt-4 text-xl">
           <Link
-            href="/slub"
+            href="/kategoria/slub"
             className="block font-semibold text-black hover:text-primary transition-colors duration-300"
           >
             Ślub
           </Link>
           <Link
-            href="/chrzest"
+            href="/kategoria/chrzest"
             className="block font-semibold text-black hover:text-primary transition-colors duration-300"
           >
             Chrzest
           </Link>
           <Link
-            href="/komunia"
+            href="/kategoria/komunia"
             className="block font-semibold text-black hover:text-primary transition-colors duration-300"
           >
             Komunia
           </Link>
           <Link
-            href="/dekoracje"
+            href="/kategoria/dekoracje"
             className="block font-semibold text-black hover:text-primary transition-colors duration-300"
           >
             Dekoracje
           </Link>
           <Link
-            href="/prezenty"
+            href="/kategoria/prezenty"
             className="block font-semibold text-black hover:text-primary transition-colors duration-300"
           >
             Prezenty
@@ -146,11 +146,11 @@ const Navbar = () => {
         {isOpen && (
           <div className="mt-4 grid grid-cols-2 md:hidden gap-4">
             {[
-              { href: "/slub", label: "Ślub" },
-              { href: "/chrzest", label: "chrzest" },
-              { href: "/komunia", label: "Komunia" },
-              { href: "/dekoracje", label: "Dekoracje" },
-              { href: "/prezenty", label: "Prezenty" },
+              { href: "/kategoria/slub", label: "Ślub" },
+              { href: "/kategoria/chrzest", label: "chrzest" },
+              { href: "/kategoria/komunia", label: "Komunia" },
+              { href: "/kategoria/dekoracje", label: "Dekoracje" },
+              { href: "/kategoria/prezenty", label: "Prezenty" },
               { href: "/blog", label: "Blog" },
             ].map((item, index) => (
               <Link

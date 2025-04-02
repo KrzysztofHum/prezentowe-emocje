@@ -9,9 +9,13 @@ const Footer = () => {
           <div>
             <p className="mb-2 text-2xl">Ślub</p>
             <div className="flex flex-col">
-              <Link href="/zaproszenia-slubne">Zaproszenia ślubne</Link>
-              <Link href="/podziekowania-slubne">Podziękowania ślubne</Link>
-              <Link href="/parapetia-dodatki-slubne">
+              <Link href="/kategoria/zaproszenia-slubne">
+                Zaproszenia ślubne
+              </Link>
+              <Link href="/kategoria/podziekowania-slubne">
+                Podziękowania ślubne
+              </Link>
+              <Link href="/kategoria/parapetia-dodatki-slubne">
                 Parapetia i dodatki ślubne
               </Link>
             </div>
@@ -19,9 +23,13 @@ const Footer = () => {
           <div>
             <p className="mb-2 text-2xl">Chrzest</p>
             <div className="flex flex-col">
-              <Link href="/zaproszenia-na-chrzest">Zaproszenia na chrzest</Link>
-              <Link href="/dekoracje-na-chrzest">Dekoracje na chrzest</Link>
-              <Link href="/parapetia-dodatki-chrzest">
+              <Link href="/kategoria/zaproszenia-na-chrzest">
+                Zaproszenia na chrzest
+              </Link>
+              <Link href="/kategoria/dekoracje-na-chrzest">
+                Dekoracje na chrzest
+              </Link>
+              <Link href="/kategoria/parapetia-dodatki-chrzest">
                 Parapetia i dodatki chrzest
               </Link>
             </div>
@@ -29,11 +37,13 @@ const Footer = () => {
           <div>
             <p className="mb-2 text-2xl">Komunia</p>
             <div className="flex flex-col">
-              <Link href="/zaproszenia-komunijne">Zaproszenia komunijne</Link>
-              <Link href="/podziekowania-komunijne">
+              <Link href="/kategoria/zaproszenia-komunijne">
+                Zaproszenia komunijne
+              </Link>
+              <Link href="/kategoria/podziekowania-komunijne">
                 Podziękowania komunijne
               </Link>
-              <Link href="/parapetia-dodatki-komunijne">
+              <Link href="/kategoria/parapetia-dodatki-komunijne">
                 Parapetia i dodatki komunijne
               </Link>
             </div>

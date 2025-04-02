@@ -2,7 +2,7 @@
 const nextConfig = {
   // output: "export",
   images: {
-    domains: ["localhost"], // Dodaj tutaj 'localhost'
+    domains: ["wordpress.prezentowyswiat.pl"], // Dodaj tutaj 'localhost'
   },
 };
 

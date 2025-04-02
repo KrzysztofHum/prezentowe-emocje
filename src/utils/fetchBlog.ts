@@ -35,7 +35,7 @@ export const getFeaturedImageUrl = async (
   if (!mediaId) return null;
 
   const request_data = {
-    url: `http://localhost:8000/wp-json/wp/v2/media/${mediaId}`,
+    url: `https://wordpress.prezentowyswiat.pl/wp/wp-json/wp/v2/media/${mediaId}`,
     method: "GET",
   };
 
@@ -57,7 +57,7 @@ export const getFeaturedImageUrl = async (
 
 export const getBlogPosts = async (): Promise<Post[]> => {
   const request_data = {
-    url: "http://localhost:8000/wp-json/wp/v2/posts",
+    url: "https://wordpress.prezentowyswiat.pl/wp/wp-json/wp/v2/posts",
     method: "GET",
   };
 
@@ -88,7 +88,7 @@ export const fetchBlogPostBySlug = async (
   slug: string
 ): Promise<Post | null> => {
   const request_data = {
-    url: `http://localhost:8000/wp-json/wp/v2/posts?slug=${encodeURIComponent(
+    url: `https://wordpress.prezentowyswiat.pl/wp/wp-json/wp/v2/posts?slug=${encodeURIComponent(
       slug
     )}`,
     method: "GET",

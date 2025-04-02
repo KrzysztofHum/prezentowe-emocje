@@ -14,7 +14,7 @@ const oauth = OAuth({
 
 export const getProducts = async () => {
   const request_data = {
-    url: `http://localhost:8000/wp-json/wc/v3/products`,
+    url: `https://wordpress.prezentowyswiat.pl/wp/wp-json/wc/v3/products`,
     method: "GET",
   };
 
@@ -36,7 +36,7 @@ export const getProducts = async () => {
 
 export const fetchProductBySlug = async (slug) => {
   const request_data = {
-    url: `http://localhost:8000/wp-json/wc/v3/products?slug=${encodeURIComponent(
+    url: `https://wordpress.prezentowyswiat.pl/wp/wp-json/wc/v3/products?slug=${encodeURIComponent(
       slug
     )}`,
     method: "GET",
