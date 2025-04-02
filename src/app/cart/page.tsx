@@ -120,8 +120,8 @@ const Cart: React.FC = () => {
   }
 
   const shippingOptions: ShippingOption[] = [
-    { id: "inpost_paczkomaty", name: "InPost Paczkomaty 24/7", price: 9.99 },
     { id: "dpd_pickup", name: "DPD Pickup - Automaty i punkty", price: 8.99 },
+    { id: "inpost_paczkomaty", name: "InPost Paczkomaty 24/7", price: 9.99 },
     { id: "kurier_inpost", name: "Kurier InPost", price: 12.99 },
     { id: "kurier_dpd", name: "Kurier DPD", price: 12.99 },
   ];
@@ -132,9 +132,8 @@ const Cart: React.FC = () => {
   const [paczkomatInput, setPaczkInput] = useState<string>("");
   const [isMapVisible, setIsMapVisible] = useState<boolean>(false);
 
-  const [selectedPayment, setSelectedPayment] = useState<string>(
-    "BLIK oraz Szybkie przelewy online"
-  );
+  const [selectedPayment, setSelectedPayment] =
+    useState<string>("Przelew Tradycyjny");
 
   const totalPrice = cart.reduce(
     (total, product) => total + product.price * product.quantity,
@@ -142,7 +141,7 @@ const Cart: React.FC = () => {
   );
 
   const shippingCost = selectedOption ? selectedOption.price : 0;
-  const totalToPay = totalPrice + shippingCost;
+  const totalToPay = parseFloat((totalPrice + shippingCost).toFixed(2));
 
   const handleCheckout = async () => {
     const validationErrors = validateForm();
@@ -158,20 +157,35 @@ const Cart: React.FC = () => {
       return;
     }
 
-    const cartData = {
-      cart,
-      customer: formData,
-      shippingOption: selectedOption.name,
-      paymentMethod: selectedPayment,
-      subscribeEmail,
-      subscribePhone,
-      shippingCost,
-      totalPrice,
-      totalToPay,
+    const orderData = {
+      payment_method: "bacs",
+      payment_method_title: selectedPayment,
+      set_paid: false,
+      billing: {
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        address_1: formData.street,
+        city: formData.city,
+        postcode: formData.postalCode,
+        country: "PL",
+        email: formData.email,
+        phone: formData.phone,
+      },
+      line_items: cart.map((product) => ({
+        product_id: product.id,
+        quantity: product.quantity,
+      })),
     };
-    console.log(selectedPayment);
+
     if (selectedPayment === "Przelew Tradycyjny") {
-      console.log(selectedPayment, "33");
+      await fetch("/api/add-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
+
       await fetch("/api/send-order-email", {
         method: "POST",
         headers: {
@@ -179,61 +193,22 @@ const Cart: React.FC = () => {
         },
         body: JSON.stringify({
           customer: formData,
-          orderDetails: `${cart.map(
-            (product) =>
-              `Produkt: ${product.name}, Ilość: ${product.quantity}, Cena: ${product.price} zł\n`
-          )}\nSuma zamówienia: ${totalPrice} zł\nKoszt wysyłki: ${shippingCost} zł\nMetoda dostawy: ${selectedOption.name}\nPłatność przez: ${selectedPayment}`,
+          orderDetails: cart,
           paymentInfo: `Kwota do zapłaty: ${totalToPay} PLN\nDane do przelewu: 36 1020 3570 0000 2902 0076 8168`,
         }),
       });
-      try {
-        const response = await fetch(
-          "https://twoja-strona.pl/wp-json/custom/v1/save-cart",
-          {
-            method: "POST",
-            body: JSON.stringify(cartData),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
 
-        if (response.ok) {
-          clearCart();
-          const { payment_url } = await response.json();
-          window.location.href = payment_url;
-        } else {
-          alert("Wystąpił błąd przy zapisie koszyka.");
-        }
-      } catch (error) {
-        console.error(error);
-        alert("Wystąpił błąd przy zapisie koszyka.");
-      }
+      clearCart();
+    } else {
+      await fetch("/api/add-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
+      clearCart();
     }
-
-    // try {
-    //   const response = await fetch(
-    //     "https://twoja-strona.pl/wp-json/custom/v1/save-cart",
-    //     {
-    //       method: "POST",
-    //       body: JSON.stringify(cartData),
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     }
-    //   );
-
-    //   if (response.ok) {
-    //     clearCart();
-    //     const { payment_url } = await response.json();
-    //     window.location.href = payment_url;
-    //   } else {
-    //     alert("Wystąpił błąd przy zapisie koszyka.");
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    //   alert("Wystąpił błąd przy zapisie koszyka.");
-    // }
   };
 
   return (
@@ -567,9 +542,9 @@ const Cart: React.FC = () => {
                 onChange={(e) => setSubscribeEmail(e.target.checked)}
               />
               <label htmlFor="subscribeEmail" className="ml-1">
-                Chcę otrzymywać od Prezentowyswiat informacje handlowe
-                dotyczące Prezentowyswiat i jej partnerów, na podany przeze
-                mnie adres e-mail.
+                Chcę otrzymywać od Prezentowyswiat informacje handlowe dotyczące
+                Prezentowyswiat i jej partnerów, na podany przeze mnie adres
+                e-mail.
               </label>
             </div>
             <div>
@@ -580,9 +555,9 @@ const Cart: React.FC = () => {
                 id="subscribePhone"
               />
               <label htmlFor="subscribePhone" className="ml-1">
-                Chcę otrzymywać od Prezentowyswiat informacje handlowe
-                dotyczące prezentowyswiat i jej partnerów, na podany przeze
-                mnie numer telefonu.
+                Chcę otrzymywać od Prezentowyswiat informacje handlowe dotyczące
+                prezentowyswiat i jej partnerów, na podany przeze mnie numer
+                telefonu.
               </label>
             </div>
           </div>
