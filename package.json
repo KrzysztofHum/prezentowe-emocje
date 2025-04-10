@@ -6,12 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "startt": "node server.js",
     "lint": "next lint"
   },
   "dependencies": {
     "@react-email/render": "^1.0.5",
     "axios": "^1.7.9",
-    "crypto": "^1.0.1",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.456.0",
     "mysql2": "^3.12.0",

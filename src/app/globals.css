@@ -38,7 +38,7 @@ body {
 }
 
 .sectionBtn {
-  @apply bg-primary border-primary border-2 p-4 px-16 text-white transition-colors duration-300 hover:bg-white hover:text-black uppercase mt-4;
+  @apply bg-primary border-primary border-2 p-4 sm:px-16 text-white transition-colors duration-300 hover:bg-white hover:text-black uppercase mt-4;
 }
 
 .textH {

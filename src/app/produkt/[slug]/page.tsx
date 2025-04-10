@@ -52,7 +52,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!product[0]) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-        <p className="mt-4 text-2xl text-gray-600">
+        <p className="mt-4 text-2xl text-gray-600 text-center">
           Ups... Produkt nie został znaleziony!
         </p>
         <p className="mt-2 mb-6 text-gray-500 text-center">

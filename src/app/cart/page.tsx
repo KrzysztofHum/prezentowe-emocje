@@ -120,17 +120,17 @@ const Cart: React.FC = () => {
   }
 
   const shippingOptions: ShippingOption[] = [
-    { id: "dpd_pickup", name: "DPD Pickup - Automaty i punkty", price: 8.99 },
-    { id: "inpost_paczkomaty", name: "InPost Paczkomaty 24/7", price: 9.99 },
-    { id: "kurier_inpost", name: "Kurier InPost", price: 12.99 },
-    { id: "kurier_dpd", name: "Kurier DPD", price: 12.99 },
+    { id: "pocztex", name: "Kurier Pocztex", price: 15.0 },
+    { id: "inpost_paczkomaty", name: "InPost Paczkomaty 24/7", price: 11.99 },
+    { id: "kurier_inpost", name: "Kurier InPost", price: 14.99 },
+    { id: "kurier_dpd", name: "Kurier DPD", price: 13.99 },
   ];
 
   const [selectedOption, setSelectedOption] = useState<ShippingOption>(
     shippingOptions[0]
   );
   const [paczkomatInput, setPaczkInput] = useState<string>("");
-  const [isMapVisible, setIsMapVisible] = useState<boolean>(false);
+  // const [isMapVisible, setIsMapVisible] = useState<boolean>(false);
 
   const [selectedPayment, setSelectedPayment] =
     useState<string>("Przelew Tradycyjny");
@@ -144,6 +144,8 @@ const Cart: React.FC = () => {
   const totalToPay = parseFloat((totalPrice + shippingCost).toFixed(2));
 
   const handleCheckout = async () => {
+    alert("Sklep jest tymczasowo nieczynny. Wkrótce otwarcie!");
+
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -194,7 +196,7 @@ const Cart: React.FC = () => {
         body: JSON.stringify({
           customer: formData,
           orderDetails: cart,
-          paymentInfo: `Kwota do zapłaty: ${totalToPay} PLN\nDane do przelewu: 36 1020 3570 0000 2902 0076 8168`,
+          paymentInfo: `Kwota do zapłaty: ${totalToPay} PLN\nDane do przelewu: xxx`,
         }),
       });
 
@@ -229,7 +231,7 @@ const Cart: React.FC = () => {
                 className="border border-gray-300 rounded-lg p-4 my-4"
               >
                 <div className="flex items-center border-b border-gray-300">
-                  <Link href={`/products/${product.slug}`} className="block">
+                  <Link href={`/product/${product.slug}`} className="block">
                     <Image
                       className="max-h-[80px] max-w-[90px] mr-2 cursor-pointer"
                       src={product.image}
@@ -240,9 +242,7 @@ const Cart: React.FC = () => {
                   </Link>
                   <div>
                     <h2 className="w-full">
-                      <Link href={`/products/${product.slug}`}>
-                        {product.name}
-                      </Link>
+                      <Link href={`//${product.slug}`}>{product.name}</Link>
                     </h2>
                     <p className="text-primary font-medium text-2xl py-2">
                       {product.price} zł
@@ -307,12 +307,12 @@ const Cart: React.FC = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="Wybierz Paczkomat..."
+                  placeholder="Wpisz numer oraz adres paczkomatu"
                   value={paczkomatInput}
                   onChange={(e) => setPaczkInput(e.target.value)}
                   className="mt-2 w-full border rounded p-2"
                 />
-                <button
+                {/* <button
                   className="sectionBtn"
                   onClick={() => setIsMapVisible(true)}
                 >
@@ -326,7 +326,7 @@ const Cart: React.FC = () => {
                       <span className="font-bold">{paczkomatInput}</span>]
                     </p>
                   </div>
-                )}
+                )} */}
               </div>
             )}
           </div>
